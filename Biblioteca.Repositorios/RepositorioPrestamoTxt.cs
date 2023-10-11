@@ -77,6 +77,7 @@ public class RepositorioPrestamoTxt: IRepositorioPrestamo
 */
 
 
+    //CHECKEAR este metodo, quizas tendria que hacer algo con el devolver, es raro que llame a devolver() fuera de la funcion
     public void devolverLibro(Prestamo prestamoIngresado)
     {
         // este codigo va a consistir en cargar la lista en memoria,
