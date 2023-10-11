@@ -1,8 +1,10 @@
-﻿using Biblioteca.Aplicacion;
+﻿using System.Runtime.CompilerServices;
+using Biblioteca.Aplicacion;
 using Biblioteca.Repositorios;
 
 //debug:
 Console.ForegroundColor = ConsoleColor.Green; //esto lo hago para que se vea bien en la consola de mi pc.
+Console.Clear();
 Console.Clear();
 
 
@@ -10,7 +12,24 @@ Console.Clear();
 var repositorioLibro = new RepositorioLibroTxt();
 var repositorioEstudiante = new RepositorioEstudianteTxt();
 var repositorioDocente = new RepositorioDocenteTxt();
+var repositorioPrestamo = new RepositorioPrestamoTxt();
 
+/*
+    int cantLibrosPrestados(int idLibro);
+
+    void realizarPrestamo(Prestamo prestamo);
+    void devolverLibro(Prestamo devolucion);   
+
+    List<Prestamo> listarPrestamos();
+
+    List<Prestamo> listarPrestamosActivos();
+*/
+
+//inicializo los casos de uso e inyecto las dependencias de prestamos:
+var realizarPrestamo = new RealizarPrestamoUseCase(repositorioPrestamo, repositorioLibro);
+var devolverLibro = new DevolverLibroUseCase(repositorioPrestamo);
+var listarPrestamosActivos = new ListarPrestamosActivosUseCase(repositorioPrestamo);
+var listarPrestamos = new ListarPrestamosUseCase(repositorioPrestamo);
 
 //inicializo los casos de uso e inyecto las dependencias de estudiantes:
 var altaEstudiante = new AltaEstudianteUseCase(repositorioEstudiante);
@@ -24,6 +43,8 @@ var bajaDocente = new BajaDocenteUseCase(repositorioDocente);
 var listarDocentes = new ListarDocentesUseCase(repositorioDocente);
 var modificarDocente = new ModificarDocenteUseCase(repositorioDocente);
 
+//codigo de prueba estudiantes y docentes:
+///*
 
 Estudiante[] estudiantes = {
     new Estudiante(123456, "Juan", "Pérez", "123 Calle Principal", "Facultad de Ciencias", "555-123-4567", "juan.perez@example.com", 101, "Ingeniería Informática"),
@@ -72,7 +93,14 @@ Console.WriteLine("\n\nlistando estudiantes: ");
 foreach (Estudiante est in listarEstudiantes.Ejecutar())
     Console.WriteLine(est);
 
-/*
+//*/
+
+
+
+
+
+//codigo de prueba libros:
+///*
 
 //inicializo los casos de uso e inyecto las dependencias de libros:
 var altaLibro = new AltaLibroUseCase(repositorioLibro);
@@ -103,7 +131,7 @@ foreach (Libro libro in libros)
     altaLibro.Ejecutar(libro);    
 
 //elimino el libro con esa id:
-bajaLibro.Ejecutar(6);
+// bajaLibro.Ejecutar(6);
 
 //modifico el libro 0 y 7:  (lo remplazo con el señor de los anillos)
 modificarLibro.Ejecutar(new Libro(0,"J.R.R. Tolkien","La Comunidad del Anillo",1954,"Fantasía",1));
@@ -118,10 +146,34 @@ foreach(Libro libro in listarLibros.Ejecutar()){
 
 //Console.WriteLine(verLibro.Ejecutar(1));
 
-*/
+//*/
 
 
 
 
+//codigo de prueba prestamos:
+// /*
+Prestamo[] prestamos = {
+    new Prestamo(0,0,DateTime.Now),
+    new Prestamo(1,1,DateTime.Now),
 
-//inicializo los casos de uso e inyecto las dependencias de alumnos:
+};
+
+foreach (Prestamo prestamo in prestamos)
+    realizarPrestamo.Ejecutar(prestamo);
+
+prestamos[0].devolver(DateTime.Now, true);
+prestamos[1].devolver(DateTime.Now, true);
+
+devolverLibro.Ejecutar(prestamos[0]);
+devolverLibro.Ejecutar(prestamos[1]);
+
+
+Console.WriteLine("\n prestamos: \n\n");
+
+foreach (Prestamo p in listarPrestamos.Ejecutar()){
+    Console.WriteLine(p);
+}
+// */
+
+

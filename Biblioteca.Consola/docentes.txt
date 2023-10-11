@@ -1,2 +1,0 @@
-10,999,michael,jackson,santa barbara-california,Academia Universitaria de Baile,0800-01101001,michael.jack@oficial.com,123,2000
-12,98765,Pedro,López,Calle 789; Ciudad Universitaria,Facultad de Ingeniería,555-234-5678,pedro.lopez@example.com,34567,2012
