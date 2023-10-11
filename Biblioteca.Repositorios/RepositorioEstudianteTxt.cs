@@ -125,8 +125,8 @@ public class RepositorioEstudianteTxt: IRepositorioEstudiante
 
     private Estudiante stringAEstudiante(string[] subLinea)
     {        
-        if(subLinea.Length < 10){
-            throw new Exception("string de datos invalido, faltan parametros sobre el estudiante");//checkear
+        if(subLinea.Length != 10){
+            throw new Exception("string de datos invalido, cantidad de parametros del estudiante incorrectas");
         }
         
         //creo un nuevo estudiante basandome en el formato:
@@ -137,7 +137,7 @@ public class RepositorioEstudianteTxt: IRepositorioEstudiante
                                 apellido:           subLinea[3] , 
                                 direccion:          subLinea[4] , 
                                 facultad:           subLinea[5] ,
-                                telefono:           int.Parse(subLinea[6]) ,
+                                telefono:           subLinea[6] ,
                                 correoElectronico:  subLinea[7] ,
                                 numeroAlumno:       int.Parse(subLinea[8]) ,
                                 carrera:            subLinea[9]

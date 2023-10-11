@@ -156,8 +156,8 @@ public class RepositorioLibroTxt: IRepositorioLibro
     private Libro stringALibro(string[] subLinea)
     {        
         
-        if(subLinea.Length < 6){
-            throw new Exception("string de datos invalido, faltan parametros sobre el libro"); //checkear
+        if(subLinea.Length != 6){
+            throw new Exception("string de datos invalido, cantidad de parametros del libro incorrectas"); 
         }
         
         //creo un nuevo libro basandome en el formato:
@@ -169,13 +169,6 @@ public class RepositorioLibroTxt: IRepositorioLibro
     {        
         string[] subLinea = strInfoLibro.Split(',');
         
-        if(subLinea.Length < 6){
-            throw new Exception("string de datos invalido, faltan parametros sobre el libro");//checkear
-        }
-        
-        //creo un nuevo libro basandome en el formato:
-        //$"{id},{autor},{titulo},{añoPublicacion},{genero},{numeroEjemplares}";   
-        return new Libro ( int.Parse(subLinea[0]) , subLinea[1] , subLinea[2] , int.Parse(subLinea[3]) , subLinea[4] , int.Parse(subLinea[5]) );
-        
+        return stringALibro(subLinea);        
     }
 }

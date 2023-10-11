@@ -41,7 +41,7 @@ public static class IDmanager{
 
             }
 
-            sr.Dispose();
+            sr.Close();
 
             //parseo el numero, si el numero es -1, es porque no encontre la entidad.
             ultimoID = int.Parse(strNro);
@@ -50,6 +50,7 @@ public static class IDmanager{
             if(ultimoID == -1){
                 using var sw = new StreamWriter(nombreArchivo,true);
                 sw.WriteLine($"{entidad}:0");
+                ultimoID = 0;
                 //Console.WriteLine("no se encontro la entidad.");
             }
         }
@@ -58,6 +59,7 @@ public static class IDmanager{
         catch(FileNotFoundException){
             using var sw = new StreamWriter(nombreArchivo,true); //creo un nuevo archivo
             sw.WriteLine($"{entidad}:0"); //inicializo el id de la entidad en 0
+            sw.Close();
         }
 
         return ultimoID;

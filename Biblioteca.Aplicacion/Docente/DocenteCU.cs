@@ -1,11 +1,9 @@
-using Biblioteca.Aplicacion;
+namespace Biblioteca.Aplicacion;  
 
-namespace Almacen.Aplicacion;  
-
-public class altaDocenteUseCase   
+public class AltaDocenteUseCase   
 {
     private readonly IRepositorioDocente _repo;
-    public altaDocenteUseCase(IRepositorioDocente repo)
+    public AltaDocenteUseCase(IRepositorioDocente repo)
     {
         this._repo = repo;
     }
@@ -30,10 +28,10 @@ public class BajaDocenteUseCase
     
 }
 
-public class modificarDocenteUseCase   
+public class ModificarDocenteUseCase   
 {
     private readonly IRepositorioDocente _repo;
-    public modificarDocenteUseCase(IRepositorioDocente repo)
+    public ModificarDocenteUseCase(IRepositorioDocente repo)
     {
         this._repo = repo;
     }

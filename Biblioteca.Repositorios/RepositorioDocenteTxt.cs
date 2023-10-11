@@ -125,19 +125,19 @@ public class RepositorioDocenteTxt: IRepositorioDocente
 
     private Docente stringADocente(string[] subLinea)
     {        
-        if(subLinea.Length < 10){
-            throw new Exception("string de datos invalido, faltan parametros sobre el docente");//checkear
+        if(subLinea.Length != 10){
+            throw new Exception("string de datos invalido, cantidad de parametros del docente incorrectas");
         }
         
         //creo un nuevo docente basandome en el formato:
         //"{id},{numeroCarnet},{nombre},{apellido},{direccion},{facultad},{telefono},{correoElectronico}",{numeroMatricula},{añoInicioDocencia}"";  
-        return new Docente ( id: int.Parse(subLinea[0]) ,
+        return new Docente (    id:                 int.Parse(subLinea[0]) ,
                                 numeroCarnet:       int.Parse(subLinea[1]) ,
                                 nombre:             subLinea[2] , 
                                 apellido:           subLinea[3] , 
                                 direccion:          subLinea[4] , 
                                 facultad:           subLinea[5] ,
-                                telefono:           int.Parse(subLinea[6]) ,
+                                telefono:           subLinea[6] ,
                                 correoElectronico:  subLinea[7] ,
                                 nroMatricula:       int.Parse(subLinea[8]) ,
                                 añoInicio:          int.Parse(subLinea[9])

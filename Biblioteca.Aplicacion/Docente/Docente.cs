@@ -6,7 +6,17 @@ public class Docente : Persona{
     
 
     public Docente(int id , int numeroCarnet, string nombre, string apellido, string direccion,
-                   string facultad, int telefono, string correoElectronico,
+                   string facultad, string telefono, string correoElectronico,
+                   int nroMatricula, int añoInicio)//2 parametros unicos de Docente
+                    :base(id, numeroCarnet, nombre, apellido, direccion, facultad, telefono, correoElectronico){//accedo a la superclase y inicializo los metodos
+        
+        this.numeroMatricula= nroMatricula;
+        this.añoInicioDocencia = añoInicio;
+
+    }
+
+    public Docente(int numeroCarnet, string nombre, string apellido, string direccion,
+                   string facultad, string telefono, string correoElectronico,
                    int nroMatricula, int añoInicio)//2 parametros unicos de Docente
                     :base( numeroCarnet, nombre, apellido, direccion, facultad, telefono, correoElectronico){//accedo a la superclase y inicializo los metodos
         

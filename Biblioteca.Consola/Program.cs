@@ -8,6 +8,69 @@ Console.Clear();
 
 //inicializo los repositorios
 var repositorioLibro = new RepositorioLibroTxt();
+var repositorioEstudiante = new RepositorioEstudianteTxt();
+var repositorioDocente = new RepositorioDocenteTxt();
+
+
+//inicializo los casos de uso e inyecto las dependencias de estudiantes:
+var altaEstudiante = new AltaEstudianteUseCase(repositorioEstudiante);
+var bajaEstudiante = new BajaEstudianteUseCase(repositorioEstudiante);
+var listarEstudiantes = new ListarEstudiantesUseCase(repositorioEstudiante);
+var modificarEstudiante = new ModificarEstudianteUseCase(repositorioEstudiante);
+
+//inicializo los casos de uso e inyecto las dependencias de profesores:
+var altaDocente = new AltaDocenteUseCase(repositorioDocente);
+var bajaDocente = new BajaDocenteUseCase(repositorioDocente);
+var listarDocentes = new ListarDocentesUseCase(repositorioDocente);
+var modificarDocente = new ModificarDocenteUseCase(repositorioDocente);
+
+
+Estudiante[] estudiantes = {
+    new Estudiante(123456, "Juan", "Pérez", "123 Calle Principal", "Facultad de Ciencias", "555-123-4567", "juan.perez@example.com", 101, "Ingeniería Informática"),
+    new Estudiante(234567, "Ana", "López", "456 Avenida Secundaria", "Facultad de Ciencias Sociales", "555-234-5678", "ana.lopez@example.com", 102, "Psicología"),
+    new Estudiante(345678, "Luis", "García", "789 Calle Secundaria", "Facultad de Ingeniería", "555-345-6789", "luis.garcia@example.com", 103, "Ingeniería Eléctrica"),
+    new Estudiante(456789, "María", "Martínez", "101 Calle Principal", "Facultad de Medicina", "555-456-7890", "maria.martinez@example.com", 104, "Medicina"),
+    new Estudiante(567890, "Carlos", "Fernández", "202 Avenida Principal", "Facultad de Artes", "555-567-8901", "carlos.fernandez@example.com", 105, "Artes Plásticas"),
+    new Estudiante(678901, "Laura", "Rodríguez", "303 Avenida Secundaria", "Facultad de Derecho", "555-678-9012", "laura.rodriguez@example.com", 106, "Derecho"),
+    new Estudiante(789012, "Miguel", "Gómez", "404 Calle Principal", "Facultad de Economía", "555-789-0123", "miguel.gomez@example.com", 107, "Economía"),
+    new Estudiante(890123, "Sofía", "Sánchez", "505 Avenida Principal", "Facultad de Ciencias de la Salud", "555-890-1234", "sofia.sanchez@example.com", 108, "Enfermería"),
+    new Estudiante(901234, "Pedro", "Hernández", "606 Avenida Secundaria", "Facultad de Ciencias Naturales", "555-901-2345", "pedro.hernandez@example.com", 109, "Biología"),
+    new Estudiante(012345, "Isabel", "Torres", "707 Calle Principal", "Facultad de Ciencias de la Computación","555-012-345", "isabel.torres@example.com", 110, "Ciencias de la Computación")
+};
+
+foreach (Estudiante est in estudiantes)
+    altaEstudiante.Ejecutar(est);
+
+
+Docente[] docentes = {
+    new Docente(12345, "Juan", "Pérez", "Calle 123; Ciudad Universitaria", "Facultad de Ciencias", "555-123-4567", "juan.perez@example.com", 67890, 2010),
+    new Docente(54321, "María", "Gómez", "Avenida 456; Ciudad Universitaria", "Facultad de Artes", "555-987-6543", "maria.gomez@example.com", 54321, 2008),
+    new Docente(98765, "Pedro", "López", "Calle 789; Ciudad Universitaria", "Facultad de Ingeniería", "555-234-5678", "pedro.lopez@example.com", 34567, 2012)
+};
+
+foreach (Docente doc in docentes)
+    altaDocente.Ejecutar(doc);
+
+
+//elimino el estudiantes con esa id:
+bajaEstudiante.Ejecutar(6);
+
+//elimino el docente con esa id:
+bajaDocente.Ejecutar(11);
+
+
+modificarDocente.Ejecutar( new Docente(10 ,999, "michael" , "jackson" , "santa barbara-california" , "Academia Universitaria de Baile" , "0800-01101001" , "michael.jack@oficial.com" , 123 , 2000) );
+
+modificarEstudiante.Ejecutar(new Estudiante(0, 23456, "Tony", "Stark", "Torre Stark Ciudad de los Vengadores", "Facultad de Ingeniería Avanzada", "555-789-0123", "tony.stark@example.com", 272, "ingenieria mecatronica" ) );
+
+
+Console.WriteLine("\n\nlistando docentes: \n");
+foreach (Docente doc in listarDocentes.Ejecutar())
+    Console.WriteLine(doc);
+
+Console.WriteLine("\n\nlistando estudiantes: ");
+foreach (Estudiante est in listarEstudiantes.Ejecutar())
+    Console.WriteLine(est);
 
 /*
 
@@ -56,6 +119,8 @@ foreach(Libro libro in listarLibros.Ejecutar()){
 //Console.WriteLine(verLibro.Ejecutar(1));
 
 */
+
+
 
 
 
