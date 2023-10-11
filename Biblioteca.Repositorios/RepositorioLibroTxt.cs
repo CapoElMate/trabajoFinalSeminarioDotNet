@@ -14,6 +14,7 @@ public class RepositorioLibroTxt: IRepositorioLibro
 
     public void altaLibro(Libro libro)
     {
+        //NOTA: no checkeo si se repite el id del libro, no deberia pasar.
         libro.id = IDmanager.Obtener("libro");  //modifica el id del libro para tener el de id manager
         IDmanager.Modificar("libro",libro.id+1);//hace que el id para esta categoria aumente en 1
 
@@ -35,10 +36,10 @@ public class RepositorioLibroTxt: IRepositorioLibro
        
             while(!encontrado && !sr.EndOfStream)
             {            
-                string[] subLinea = sr.ReadLine().Split(',');
+                string[]? subLinea = sr.ReadLine().Split(',');
 
                 //si el id actual es igual al ingresado:
-                if( subLinea[0].Equals( idLibro.ToString() )){
+                if( subLinea!=null && subLinea[0].Equals( idLibro.ToString() )){
                     libro = stringALibro(subLinea);                
                     encontrado = true;//NOTA: use un boolean porque no se si esta bueno usar el break
                 }
@@ -54,47 +55,15 @@ public class RepositorioLibroTxt: IRepositorioLibro
         return libro;
     }
 
-    
 
-//checkear
-/*
-    public void bajaLibro(int idLibro)
-    {
-        
-        string[] strSubLibros;
-
-        using (var sr = new StreamReader(nombreArchivo)){
-            strSubLibros = sr.ReadToEnd().Split(Environment.NewLine); //string subdividido con la info de los libros.
-        }
-        
-        
-
-        //la idea seria, guardar el repo en substring, recorrerlo e ir añadiendo los elementos.
-        //si el elemento es igual lo saltea, no lo añade.
-
-        bool seEncontro = false; //variable para registrar si se encontro la variable.
-        using var sw = new StreamWriter(nombreArchivo); //append en false, para que remplaze lo anterior.
-
-        foreach( string str in strSubLibros ){
-
-            Console.WriteLine(str.Split(',')[0].Equals( idLibro.ToString() ));//DEBUG
-
-           //aca divide el substring y verifica que el id sea igual o no.            
-            if( ! str.Split(',')[0].Equals( idLibro.ToString() )  && !str.Equals(Environment.NewLine)){
-                sw.Write(str);
-                seEncontro = true;
-            }
-
-        }
-
-        if(!seEncontro){
-            throw new DataException("no se encontro el libro con el id: " + idLibro);//NOTA: use data exeption pero no sabia que exepcion usar
-        }
-    }
-*/
 
     public void bajaLibro(int idLibro)
     {
+        // este codigo va a consistir en cargar la lista en ListaLibros,
+        // e ir cargando todos los libros excepto el que tiene la id igual al que le enviamos.
+        // remplazarlo en la lista,
+        // y transformar la lista de nuevo en texto.
+
         var listaLibros = listarLibros();
 
         using var sw = new StreamWriter(nombreArchivo);
@@ -162,36 +131,7 @@ public class RepositorioLibroTxt: IRepositorioLibro
 
     }
 
-//checkear
-/*
-    public List<Libro> listarLibros()
-    {
-        var listaLibros = new List<Libro>();
-        
-        var sr = new StreamReader(nombreArchivo);
-        
-        string[] subStrings = sr.ReadToEnd().Split('\n');
-        
-        sr.Close();
-        
-        foreach( string str in subStrings ){
-            
-            // try{
-                listaLibros.Add( stringALibro(str) );
-            // }
-            // catch(Exception e){
-            //     if(e.ToString().Equals("string de datos invalido, faltan parametros sobre el libro"))
-            //         Console.WriteLine("EROR LEYENDO UNA LINEA");
-            //     else
-            //         throw e;
 
-            // }
-            
-        }
-        
-        return listaLibros;
-    }
-*/
 
     public List<Libro> listarLibros(){
         var listaLibros = new List<Libro>();
@@ -217,7 +157,7 @@ public class RepositorioLibroTxt: IRepositorioLibro
     {        
         
         if(subLinea.Length < 6){
-            //throw new Exception("string de datos invalido, faltan parametros sobre el libro"); //checkear
+            throw new Exception("string de datos invalido, faltan parametros sobre el libro"); //checkear
         }
         
         //creo un nuevo libro basandome en el formato:
@@ -230,7 +170,7 @@ public class RepositorioLibroTxt: IRepositorioLibro
         string[] subLinea = strInfoLibro.Split(',');
         
         if(subLinea.Length < 6){
-            //throw new Exception("string de datos invalido, faltan parametros sobre el libro");//checkear
+            throw new Exception("string de datos invalido, faltan parametros sobre el libro");//checkear
         }
         
         //creo un nuevo libro basandome en el formato:
