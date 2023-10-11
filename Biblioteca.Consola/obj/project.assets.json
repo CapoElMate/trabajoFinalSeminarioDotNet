@@ -1,0 +1,111 @@
+{
+  "version": 3,
+  "targets": {
+    "net7.0": {
+      "Biblioteca.Aplicacion/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/Biblioteca.Aplicacion.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Biblioteca.Aplicacion.dll": {}
+        }
+      },
+      "Biblioteca.Repositorios/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Biblioteca.Aplicacion": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Biblioteca.Repositorios.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Biblioteca.Repositorios.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Biblioteca.Aplicacion/1.0.0": {
+      "type": "project",
+      "path": "../Biblioteca.Aplicacion/Biblioteca.Aplicacion.csproj",
+      "msbuildProject": "../Biblioteca.Aplicacion/Biblioteca.Aplicacion.csproj"
+    },
+    "Biblioteca.Repositorios/1.0.0": {
+      "type": "project",
+      "path": "../Biblioteca.Repositorios/Biblioteca.Repositorios.csproj",
+      "msbuildProject": "../Biblioteca.Repositorios/Biblioteca.Repositorios.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net7.0": [
+      "Biblioteca.Aplicacion >= 1.0.0",
+      "Biblioteca.Repositorios >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Mellis UwU\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "F:\\DOCUMENTOS\\Proyectos Mate\\Facu Informatica\\.net\\trabajoParcial\\Biblioteca\\Biblioteca.Consola\\Biblioteca.Consola.csproj",
+      "projectName": "Biblioteca.Consola",
+      "projectPath": "F:\\DOCUMENTOS\\Proyectos Mate\\Facu Informatica\\.net\\trabajoParcial\\Biblioteca\\Biblioteca.Consola\\Biblioteca.Consola.csproj",
+      "packagesPath": "C:\\Users\\Mellis UwU\\.nuget\\packages\\",
+      "outputPath": "F:\\DOCUMENTOS\\Proyectos Mate\\Facu Informatica\\.net\\trabajoParcial\\Biblioteca\\Biblioteca.Consola\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Mellis UwU\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net7.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "projectReferences": {
+            "F:\\DOCUMENTOS\\Proyectos Mate\\Facu Informatica\\.net\\trabajoParcial\\Biblioteca\\Biblioteca.Aplicacion\\Biblioteca.Aplicacion.csproj": {
+              "projectPath": "F:\\DOCUMENTOS\\Proyectos Mate\\Facu Informatica\\.net\\trabajoParcial\\Biblioteca\\Biblioteca.Aplicacion\\Biblioteca.Aplicacion.csproj"
+            },
+            "F:\\DOCUMENTOS\\Proyectos Mate\\Facu Informatica\\.net\\trabajoParcial\\Biblioteca\\Biblioteca.Repositorios\\Biblioteca.Repositorios.csproj": {
+              "projectPath": "F:\\DOCUMENTOS\\Proyectos Mate\\Facu Informatica\\.net\\trabajoParcial\\Biblioteca\\Biblioteca.Repositorios\\Biblioteca.Repositorios.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net7.0": {
+        "targetAlias": "net7.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

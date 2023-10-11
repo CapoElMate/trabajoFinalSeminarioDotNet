@@ -1,0 +1,11 @@
+F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.Aplicacion\bin\Debug\net7.0\Biblioteca.Aplicacion.deps.json
+F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.Aplicacion\bin\Debug\net7.0\Biblioteca.Aplicacion.dll
+F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.Aplicacion\bin\Debug\net7.0\Biblioteca.Aplicacion.pdb
+F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.Aplicacion\obj\Debug\net7.0\Biblioteca.Aplicacion.GeneratedMSBuildEditorConfig.editorconfig
+F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.Aplicacion\obj\Debug\net7.0\Biblioteca.Aplicacion.AssemblyInfoInputs.cache
+F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.Aplicacion\obj\Debug\net7.0\Biblioteca.Aplicacion.AssemblyInfo.cs
+F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.Aplicacion\obj\Debug\net7.0\Biblioteca.Aplicacion.csproj.CoreCompileInputs.cache
+F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.Aplicacion\obj\Debug\net7.0\Biblioteca.Aplicacion.dll
+F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.Aplicacion\obj\Debug\net7.0\refint\Biblioteca.Aplicacion.dll
+F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.Aplicacion\obj\Debug\net7.0\Biblioteca.Aplicacion.pdb
+F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.Aplicacion\obj\Debug\net7.0\ref\Biblioteca.Aplicacion.dll

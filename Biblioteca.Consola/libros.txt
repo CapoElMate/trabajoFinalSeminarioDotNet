@@ -1,0 +1,15 @@
+0,borges,librote,2020,comedia,1
+2,pearson,english manual 1º edition ,2023,idiomas,10
+4,,ciencia radiante,1820,ciencia,2
+5,pearson,english manual 1º edition ,2023,idiomas,10
+6,borges,librote,2020,comedia,1
+7,,ciencia radiante,1820,ciencia,2
+9,borges,librote,2020,comedia,1
+10,,ciencia radiante,1820,ciencia,2
+11,pearson,english manual 1º edition ,2023,idiomas,10
+12,borges,librote,2020,comedia,1
+13,,ciencia radiante,1820,ciencia,2
+14,pearson,english manual 1º edition ,2023,idiomas,10
+15,borges,librote,2020,comedia,1
+16,,ciencia radiante,1820,ciencia,2
+17,pearson,english manual 1º edition ,2023,idiomas,10

@@ -1,0 +1,116 @@
+using Biblioteca.Aplicacion;
+
+namespace Biblioteca.Repositorios;
+
+public static class IDmanager{
+    
+    //generar un archivo con id, solucion temporal.
+    //la idea es tener un archivo con la ultima id de cada una de las entidades.
+
+    private static readonly string nombreArchivo = "IDcounters.txt";
+    public static int Obtener(string entidad){
+        
+        int ultimoID=0;
+
+        entidad = entidad.ToLower();
+
+        // voy a guardar el proximo id a usar de cada entidad en el siguiente formato:
+        // <entidad>:<IdProximo>
+        // <entidad>:<IdProximo>
+        // <entidad>:<IdProximo>
+        // <entidad>:<IdProximo>
+        //    ···
+       
+        try{
+            //intento leer el archivo, si no existe tira error:
+            using var sr = new StreamReader(nombreArchivo);  
+
+            string strNro ="-1"; //le doy un valor por si no llega a encontrar el valor.
+
+            //mientras no llegue al final del archivo:
+            while(!sr.EndOfStream){
+                
+                string? linea = sr.ReadLine();//leo la prox. linea
+                
+                //Console.WriteLine(linea.Split(':')[0] +":"+ linea.Split(':')[1]); //DEBUG
+
+                //si el primer elemento contiene el parametro entidad
+                if(linea.Split(':')[0].Contains(entidad)){
+                    strNro = linea.Split(':')[1]; //guardo su valor en strNro.
+                }
+
+            }
+
+            sr.Dispose();
+
+            //parseo el numero, si el numero es -1, es porque no encontre la entidad.
+            ultimoID = int.Parse(strNro);
+
+            //si no lo encontre,
+            if(ultimoID == -1){
+                using var sw = new StreamWriter(nombreArchivo,true);
+                sw.WriteLine($"{entidad}:0");
+                //Console.WriteLine("no se encontro la entidad.");
+            }
+        }
+        
+        //si intente leer el archivo pero no existe:
+        catch(FileNotFoundException){
+            using var sw = new StreamWriter(nombreArchivo,true); //creo un nuevo archivo
+            sw.WriteLine($"{entidad}:0"); //inicializo el id de la entidad en 0
+        }
+
+        return ultimoID;
+    }
+
+    public static void Modificar(string entidad, int idNuevo){
+
+        entidad = entidad.ToLower();
+
+
+        try{
+            //intento leer el archivo, si no existe tira error:
+            using var sr = new StreamReader(nombreArchivo);  
+
+            string copiaArchivo="";
+
+            //mientras no llegue al final del archivo:
+            while(!sr.EndOfStream){
+                
+                string linea = sr.ReadLine();//leo la prox. linea
+                
+                linea = linea == null ? "..." : linea;//si es nulo hago que valga "...", ignorar.//DEBUG
+                //Console.WriteLine(linea.Split(':')[0] +":"+ linea.Split(':')[1]); //DEBUG
+
+                //si el primer elemento contiene el parametro entidad
+                if(linea.Split(':')[0].Contains(entidad)){
+                    //concateno a copia archivo <entidad>:<id+1>
+                    copiaArchivo += $"{entidad}:{int.Parse(linea.Split(':')[1]) + 1}\n";
+                }else
+                    copiaArchivo += linea+"\n"; //copio esa linea
+
+            }
+
+            sr.Dispose();
+
+            //Si copia archivo no estuvo vacio, significa que tomo algunos valores
+            if(copiaArchivo != ""){
+                using var sw = new StreamWriter(nombreArchivo);
+                sw.Write(copiaArchivo);
+                //Console.WriteLine(copiaArchivo); //DEBUG
+            }
+            else{
+                throw new Exception("error, archivo IDs vacio");
+            }
+
+        }
+        
+        //DEBUG:
+        catch(FileNotFoundException e)
+        {
+            throw new FileNotFoundException("probablemente esta modificando antes de buscar");
+        }
+
+    }
+
+}
