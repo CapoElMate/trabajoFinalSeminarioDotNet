@@ -53,7 +53,7 @@ public class ListarDocentesUseCase
     }
 
     public List<Docente> Ejecutar(){
-        return _repo.ListarDocentes();
+        return _repo.listarDocentes();
     }
 
 }

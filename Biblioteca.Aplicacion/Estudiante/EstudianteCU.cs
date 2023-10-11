@@ -55,7 +55,7 @@ public class ListarEstudiantesUseCase
 
     public List<Estudiante> Ejecutar()
     {
-        return _repo.ListarEstudiantes();
+        return _repo.listarEstudiantes();
     }
 
 }

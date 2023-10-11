@@ -117,7 +117,7 @@ public class RepositorioLibroTxt: IRepositorioLibro
 
         //si no encontro el libro tiro un error.
         if(!encontrado)
-            throw new Exception("no se encotnro un libro con ese id.");
+            throw new Exception("no se encontro un libro con ese id.");
 
         
         using(var sw = new StreamWriter(nombreArchivo,false)){ // creo un nuevo streamwriter, append en false asi sobreescribe el anterior.
