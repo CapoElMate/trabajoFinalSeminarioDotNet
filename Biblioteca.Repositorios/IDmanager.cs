@@ -35,7 +35,8 @@ public static class IDmanager{
                 //Console.WriteLine(linea.Split(':')[0] +":"+ linea.Split(':')[1]); //DEBUG
 
                 //si el primer elemento contiene el parametro entidad
-                if(linea.Split(':')[0].Contains(entidad)){
+                //(comparo si es null porque si la linea es null, paso a la siguiente)
+                if(linea != null && linea.Split(':')[0].Contains(entidad)){ 
                     strNro = linea.Split(':')[1]; //guardo su valor en strNro.
                 }
 
@@ -79,13 +80,13 @@ public static class IDmanager{
             //mientras no llegue al final del archivo:
             while(!sr.EndOfStream){
                 
-                string linea = sr.ReadLine();//leo la prox. linea
-                
-                linea = linea == null ? "..." : linea;//si es nulo hago que valga "...", ignorar.//DEBUG
+                string? linea = sr.ReadLine();//leo la prox. linea
+                                
                 //Console.WriteLine(linea.Split(':')[0] +":"+ linea.Split(':')[1]); //DEBUG
 
                 //si el primer elemento contiene el parametro entidad
-                if(linea.Split(':')[0].Contains(entidad)){
+                //(comparo si es null porque si la linea es null, paso a la siguiente)
+                if( (linea != null) && linea.Split(':')[0].Contains(entidad) ){
                     //concateno a copia archivo <entidad>:<id+1>
                     copiaArchivo += $"{entidad}:{int.Parse(linea.Split(':')[1]) + 1}\n";
                 }else
@@ -108,7 +109,7 @@ public static class IDmanager{
         }
         
         //DEBUG:
-        catch(FileNotFoundException e)
+        catch(FileNotFoundException)
         {
             throw new FileNotFoundException("probablemente esta modificando antes de buscar");
         }

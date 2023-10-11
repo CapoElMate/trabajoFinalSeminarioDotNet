@@ -169,7 +169,7 @@ public class RepositorioPrestamoTxt: IRepositorioPrestamo
             }
         }
         //en caso que no encuentre el archivo
-        catch(FileNotFoundException ex){
+        catch(FileNotFoundException){
             //crea el archivo.
             using var sw = new StreamWriter(nombreArchivo);
             sw.Close();
@@ -188,7 +188,7 @@ public class RepositorioPrestamoTxt: IRepositorioPrestamo
         return DateTime.ParseExact(strFecha, formato, cultura);
     }
 
-    private Prestamo? stringAPrestamo(string[] subLinea)
+    private Prestamo stringAPrestamo(string[] subLinea)
     {        
         Prestamo prestamo; //declaro prestamo(objeto de retorno).
 
@@ -206,6 +206,7 @@ public class RepositorioPrestamoTxt: IRepositorioPrestamo
             prestamo.devolver(          fechaDeDevolucion:  parsearFecha(subLinea[4]),
                                         estaEnBuenEstado:   bool.Parse(subLinea[5]) );
         }
+        
         else if(subLinea.Length == 4){
             //creo un nuevo prestamo basandome en el formato:
             //"{id},{persona},{libro},{fechaDePrestamo.ToString("yyyy-MM-dd"),{fechaDeDevolucion.ToString("yyyy-MM-dd")},{estaEnBuenEstado}}"
@@ -215,8 +216,10 @@ public class RepositorioPrestamoTxt: IRepositorioPrestamo
                                         fechaDePrestamo:    parsearFecha(subLinea[3])  );
         }
         else 
-            throw new Exception("cantidad de parametros para el prestamo erronea");
+            throw new Exception("cantidad de parametros para el prestamo erronea"); //si no es 6 o 4, la cantidad es incorrecta.
         
+        if (prestamo == null)
+            throw new Exception("error convirtiendo texto a prestamo."); // si el prestamo es null hubo un error en el programa.
 
         return prestamo;
     }

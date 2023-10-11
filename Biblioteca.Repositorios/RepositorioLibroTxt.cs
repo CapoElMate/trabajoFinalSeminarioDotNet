@@ -25,36 +25,27 @@ public class RepositorioLibroTxt: IRepositorioLibro
     }
 
 
-    //checkear idea: ver libro pordria usar la lista y el codigo seria mucho mas facil.
-    public Libro verLibro(int idLibro)
-    {
-        Libro? libro = null;
-        bool encontrado = false;
+    public Libro verLibro(int idLibro){
         
-        using (var sr = new StreamReader(nombreArchivo))
-        {
-       
-            while(!encontrado && !sr.EndOfStream)
-            {            
-                string[]? subLinea = sr.ReadLine().Split(',');
+        //creo una lista de libros
+        var Libros = listarLibros();
+        //la variable de retorno libro es nula:
+        Libro? libro = null;
 
-                //si el id actual es igual al ingresado:
-                if( subLinea!=null && subLinea[0].Equals( idLibro.ToString() )){
-                    libro = stringALibro(subLinea);                
-                    encontrado = true;//NOTA: use un boolean porque no se si esta bueno usar el break
-                }
-            }
-
-            if (libro == null)
-                throw new DataException("no se encontro el libro con el id: " + idLibro);//NOTA: use data exeption pero no sabia que exepcion usar
-
-
-            sr.Close();            
+        //por cada libro en libros, comparo si el id es igual al del ingresado.
+        foreach(Libro l in Libros){
+            if( ( libro!=null ) && l.id == libro.id){
+                return l; // en caso de que esto se cumpla, retorno l y termino la funcion.
+            }                
         }
+
+
+        if (libro == null)
+                throw new DataException("no se encontro el libro con el id: " + idLibro);//NOTA: use data exeption pero no sabia que exepcion usar
+        
 
         return libro;
     }
-
 
 
     public void bajaLibro(int idLibro)
