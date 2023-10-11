@@ -18,12 +18,17 @@ var repositorioLibro = new RepositorioLibroTxt();
 var agregarLibro = new AltaLibroUseCase(repositorioLibro);
 var verLibro = new VerLibroUseCase(repositorioLibro);
 var bajaLibro = new BajaLibroUseCase(repositorioLibro);
-var ListarLibros = new ListarLibrosUseCase(repositorioLibro);
+var listarLibros = new ListarLibrosUseCase(repositorioLibro);
+var modificarLibro = new ModificarLibroUseCase(repositorioLibro);
 
 // foreach (Libro libro in libros)
 //     agregarLibro.Ejecutar(libro);    
 
-bajaLibro.Ejecutar(8);
+//bajaLibro.Ejecutar(8);
+
+modificarLibro.Ejecutar(new Libro(0,"jesus", "biblia",100,"religion", 100 ));
+
+
 
 // foreach(Libro libro in ListarLibros.Ejecutar()){
 //     Console.WriteLine(libro);

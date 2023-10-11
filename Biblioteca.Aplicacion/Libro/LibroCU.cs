@@ -67,7 +67,7 @@ public class ListarLibrosUseCase
 
     public List<Libro> Ejecutar()
     {
-        return _repo.ListarLibros();
+        return _repo.listarLibros();
     }
 
 }

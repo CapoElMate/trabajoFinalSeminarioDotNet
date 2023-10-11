@@ -6,6 +6,6 @@ public interface IRepositorioLibro
     public Libro verLibro(int idLibro);
     public void bajaLibro(int idLibro);
     public void modificarLibro(Libro libro);
-    public List<Libro> ListarLibros();
+    public List<Libro> listarLibros();
 
 }

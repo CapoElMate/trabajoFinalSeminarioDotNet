@@ -1,4 +1,4 @@
-0,borges,librote,2020,comedia,1
+0,jesus,biblia,100,religion,100
 2,pearson,english manual 1º edition ,2023,idiomas,10
 4,,ciencia radiante,1820,ciencia,2
 5,pearson,english manual 1º edition ,2023,idiomas,10

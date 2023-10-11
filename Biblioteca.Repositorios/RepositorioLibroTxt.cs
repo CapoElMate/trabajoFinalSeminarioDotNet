@@ -2,6 +2,7 @@
 using System.Data;
 using System.Reflection.PortableExecutable;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using Biblioteca.Aplicacion;
 
 namespace Biblioteca.Repositorios;
@@ -23,33 +24,37 @@ public class RepositorioLibroTxt: IRepositorioLibro
     }
 
 
-
-    
     //checkear idea: ver libro pordria usar la lista y el codigo seria mucho mas facil.
     public Libro verLibro(int idLibro)
     {
         Libro? libro = null;
         bool encontrado = false;
-        using var sr = new StreamReader(nombreArchivo);
         
-        while(!encontrado && !sr.EndOfStream)
-        {            
-            string[] subLinea = sr.ReadLine().Split(',');
+        using (var sr = new StreamReader(nombreArchivo))
+        {
+       
+            while(!encontrado && !sr.EndOfStream)
+            {            
+                string[] subLinea = sr.ReadLine().Split(',');
 
-            //si el id actual es igual al ingresado:
-            if( subLinea[0].Equals( idLibro.ToString() )){
-                libro = stringALibro(subLinea);                
-                encontrado = true;//NOTA: use un boolean porque no se si esta bueno usar el break
+                //si el id actual es igual al ingresado:
+                if( subLinea[0].Equals( idLibro.ToString() )){
+                    libro = stringALibro(subLinea);                
+                    encontrado = true;//NOTA: use un boolean porque no se si esta bueno usar el break
+                }
             }
+
+            if (libro == null)
+                throw new DataException("no se encontro el libro con el id: " + idLibro);//NOTA: use data exeption pero no sabia que exepcion usar
+
+
+            sr.Close();            
         }
 
-        if (libro == null)
-            throw new DataException("no se encontro el libro con el id: " + idLibro);//NOTA: use data exeption pero no sabia que exepcion usar
-
-        sr.Close();
-        
         return libro;
     }
+
+    
 
 //checkear
 /*
@@ -90,7 +95,7 @@ public class RepositorioLibroTxt: IRepositorioLibro
 
     public void bajaLibro(int idLibro)
     {
-        var listaLibros = ListarLibros();
+        var listaLibros = listarLibros();
 
         using var sw = new StreamWriter(nombreArchivo);
 
@@ -116,15 +121,50 @@ public class RepositorioLibroTxt: IRepositorioLibro
 
     }
 
-//checkear: falta escribir el metodo
-    public void modificarLibro(Libro libro)
+
+    public void modificarLibro(Libro libroIngresado)
     {
+        // este codigo va a consistir en cargar la lista en memoria,
+        // buscar el libro que tenga una id coincidente con el que le enviamos,        
+        // remplazarlo en la lista,
+        // y transformar la lista de nuevo en texto.
+
+        var listaLibros = listarLibros();
+
+        bool encontrado = false;
+        
+        
+        //aqui uso un while en vez de un for para salir cuando encuentro el libro
+        int i = 0;
+        while(!encontrado && i<listaLibros.Count()){
+            
+            if(listaLibros[i].id == libroIngresado.id){
+                encontrado = true;
+                listaLibros[i] = libroIngresado;
+            }
+
+            i++;
+        }
+
+        //si no encontro el libro tiro un error.
+        if(!encontrado)
+            throw new Exception("no se encotnro un libro con ese id.");
+
+        
+        using(var sw = new StreamWriter(nombreArchivo,false)){ // creo un nuevo streamwriter, append en false asi sobreescribe el anterior.
+            
+            foreach(Libro libro in listaLibros){
+                sw.WriteLine(libro.ToString());
+            }
+        }
+        
+        
 
     }
 
 //checkear
 /*
-    public List<Libro> ListarLibros()
+    public List<Libro> listarLibros()
     {
         var listaLibros = new List<Libro>();
         
@@ -153,7 +193,7 @@ public class RepositorioLibroTxt: IRepositorioLibro
     }
 */
 
-    public List<Libro> ListarLibros(){
+    public List<Libro> listarLibros(){
         var listaLibros = new List<Libro>();
 
         using (var sr = new StreamReader(nombreArchivo))
