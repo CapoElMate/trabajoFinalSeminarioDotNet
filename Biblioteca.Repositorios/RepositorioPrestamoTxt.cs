@@ -45,38 +45,6 @@ public class RepositorioPrestamoTxt: IRepositorioPrestamo
     }
 
 
-/* //no se si lo uso ahora
-    public Prestamo verPrestamo(int idLibro)
-    {
-        Libro? libro = null;
-        bool encontrado = false;
-        
-        using (var sr = new StreamReader(nombreArchivo))
-        {
-       
-            while(!encontrado && !sr.EndOfStream)
-            {            
-                string[]? subLinea = sr.ReadLine().Split(',');
-
-                //si el id actual es igual al ingresado:
-                if( subLinea!=null && subLinea[0].Equals( idLibro.ToString() )){
-                    libro = stringALibro(subLinea);                
-                    encontrado = true;//NOTA: use un boolean porque no se si esta bueno usar el break
-                }
-            }
-
-            if (libro == null)
-                throw new DataException("no se encontro el libro con el id: " + idLibro);//NOTA: use data exeption pero no sabia que exepcion usar
-
-
-            sr.Close();            
-        }
-
-        return libro;
-    }
-*/
-
-
     //CHECKEAR este metodo, quizas tendria que hacer algo con el devolver, es raro que llame a devolver() fuera de la funcion
     public void devolverLibro(Prestamo prestamoIngresado)
     {
