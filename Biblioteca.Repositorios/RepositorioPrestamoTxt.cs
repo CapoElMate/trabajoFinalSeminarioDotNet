@@ -36,7 +36,7 @@ public class RepositorioPrestamoTxt: IRepositorioPrestamo
     {
         //NOTA: no checkeo si se repite el id del prestamo, no deberia pasar.
         prestamo.id = IDmanager.Obtener("prestamo");  //modifica el id del prestamo para tener el de id manager
-        IDmanager.Modificar("prestamo",prestamo.id+1);//hace que el id para esta categoria aumente en 1
+        IDmanager.incrementar("prestamo");//hace que el id para esta categoria aumente en 1
 
         using var sw = new StreamWriter(nombreArchivo, true);//construyo un stream writer
 

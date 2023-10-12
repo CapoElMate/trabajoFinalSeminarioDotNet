@@ -16,7 +16,7 @@ public class RepositorioLibroTxt: IRepositorioLibro
     {
         //NOTA: no checkeo si se repite el id del libro, no deberia pasar.
         libro.id = IDmanager.Obtener("libro");  //modifica el id del libro para tener el de id manager
-        IDmanager.Modificar("libro",libro.id+1);//hace que el id para esta categoria aumente en 1
+        IDmanager.incrementar("libro");//hace que el id para esta categoria aumente en 1
 
         using var sw = new StreamWriter(nombreArchivo, true);//construyo un stream writer
 

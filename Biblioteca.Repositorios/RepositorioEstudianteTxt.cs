@@ -18,7 +18,7 @@ public class RepositorioEstudianteTxt: IRepositorioEstudiante
         //NOTA2: las personas comparten el contador de ID, asi no hay problemas en prestamo para distinguir entre personas estudiantes y profesores    .
 
         estudiante.id = IDmanager.Obtener("persona");  //modifica el id de estudiante para tener el de id manager
-        IDmanager.Modificar("persona",estudiante.id+1);//hace que el id para esta categoria aumente en 1
+        IDmanager.incrementar("persona");//hace que el id para esta categoria aumente en 1
 
         using var sw = new StreamWriter(nombreArchivo, true);//construyo un stream writer
 

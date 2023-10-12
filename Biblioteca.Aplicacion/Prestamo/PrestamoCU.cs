@@ -35,8 +35,7 @@ public class RealizarPrestamoUseCase
             cant = libro.numeroEjemplares;              
         }
         catch(Exception e){
-            Console.WriteLine("error obteniendo la cantidad de ejemplares del libro con id " + idLibro);            
-            throw e;
+            Console.WriteLine("error obteniendo la cantidad de ejemplares del libro con id " + idLibro + e); 
         }
 
         return cant;

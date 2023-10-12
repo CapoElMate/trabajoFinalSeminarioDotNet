@@ -66,7 +66,7 @@ public static class IDmanager{
         return ultimoID;
     }
 
-    public static void Modificar(string entidad, int idNuevo){
+    public static void incrementar(string entidad){
 
         entidad = entidad.ToLower();
 
@@ -88,7 +88,7 @@ public static class IDmanager{
                 //(comparo si es null porque si la linea es null, paso a la siguiente)
                 if( (linea != null) && linea.Split(':')[0].Contains(entidad) ){
                     //concateno a copia archivo <entidad>:<id+1>
-                    copiaArchivo += $"{entidad}:{int.Parse(linea.Split(':')[1]) + 1}\n";
+                    copiaArchivo += $"{entidad}:{int.Parse(linea.Split(':')[1]) + 1}\n"; // INCREMENTO en 1 el id
                 }else
                     copiaArchivo += linea+"\n"; //copio esa linea
 
