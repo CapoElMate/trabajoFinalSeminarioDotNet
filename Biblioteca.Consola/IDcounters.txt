@@ -1,2 +1,0 @@
-persona:13
-libro:10

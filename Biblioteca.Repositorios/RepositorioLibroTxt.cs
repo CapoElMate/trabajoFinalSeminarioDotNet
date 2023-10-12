@@ -15,7 +15,7 @@ public class RepositorioLibroTxt: IRepositorioLibro
     public void altaLibro(Libro libro)
     {
         //NOTA: no checkeo si se repite el id del libro, no deberia pasar.
-        libro.id = IDmanager.Obtener("libro");  //modifica el id del libro para tener el de id manager
+        libro.id = IDmanager.obtener("libro");  //modifica el id del libro para tener el de id manager
         IDmanager.incrementar("libro");//hace que el id para esta categoria aumente en 1
 
         using var sw = new StreamWriter(nombreArchivo, true);//construyo un stream writer
@@ -34,8 +34,9 @@ public class RepositorioLibroTxt: IRepositorioLibro
 
         //por cada libro en libros, comparo si el id es igual al del ingresado.
         foreach(Libro l in Libros){
-            if( ( libro!=null ) && l.id == libro.id){
-                return l; // en caso de que esto se cumpla, retorno l y termino la funcion.
+            if(l.id == idLibro){
+                libro = l; // en caso de que esto se cumpla, retorno l.
+                break; //se sale del for
             }                
         }
 
@@ -154,6 +155,7 @@ public class RepositorioLibroTxt: IRepositorioLibro
         //creo un nuevo libro basandome en el formato:
         //$"{id},{autor},{titulo},{añoPublicacion},{genero},{numeroEjemplares}";  
         return new Libro ( int.Parse(subLinea[0]) , subLinea[1] , subLinea[2] , int.Parse(subLinea[3]) , subLinea[4] , int.Parse(subLinea[5]) );
+        
     }
 
     private Libro stringALibro(string strInfoLibro)

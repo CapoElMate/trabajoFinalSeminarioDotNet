@@ -17,7 +17,7 @@ public class RepositorioEstudianteTxt: IRepositorioEstudiante
         //NOTA: no checkeo si se repite el id del estudiante, porque no deberia pasar.        
         //NOTA2: las personas comparten el contador de ID, asi no hay problemas en prestamo para distinguir entre personas estudiantes y profesores    .
 
-        estudiante.id = IDmanager.Obtener("persona");  //modifica el id de estudiante para tener el de id manager
+        estudiante.id = IDmanager.obtener("persona");  //modifica el id de estudiante para tener el de id manager
         IDmanager.incrementar("persona");//hace que el id para esta categoria aumente en 1
 
         using var sw = new StreamWriter(nombreArchivo, true);//construyo un stream writer
@@ -86,7 +86,7 @@ public class RepositorioEstudianteTxt: IRepositorioEstudiante
 
         //si no encontro el estudiante tiro un error.
         if(!encontrado)
-            throw new Exception("no se encontro un estudiante con ese id.");
+            throw new Exception("no se encontro un estudiante con el id"+estudianteIngresado.id+" para modificar.");
 
         //si no se encontro el estudiante:        
         using(var sw = new StreamWriter(nombreArchivo,false)){ // creo un nuevo streamwriter, append en false asi sobreescribe el anterior.

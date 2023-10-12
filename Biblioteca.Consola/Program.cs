@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+
 using Biblioteca.Aplicacion;
 using Biblioteca.Repositorios;
 
@@ -8,11 +9,10 @@ Console.Clear();
 Console.Clear();
 
 
-//inicializo los repositorios
-var repositorioLibro = new RepositorioLibroTxt();
-var repositorioEstudiante = new RepositorioEstudianteTxt();
-var repositorioDocente = new RepositorioDocenteTxt();
-var repositorioPrestamo = new RepositorioPrestamoTxt();
+var repositorioEstudiante = new RepositorioEstudianteTxt();     //inicializo el repositorio   
+var repositorioDocente = new RepositorioDocenteTxt();           //inicializo el repositorio
+var repositorioPrestamo = new RepositorioPrestamoTxt();         //inicializo el repositorio
+var repositorioLibro = new RepositorioLibroTxt();               //inicializo el repositorio      
 
 /*
     int cantLibrosPrestados(int idLibro);
@@ -24,6 +24,7 @@ var repositorioPrestamo = new RepositorioPrestamoTxt();
 
     List<Prestamo> listarPrestamosActivos();
 */
+
 
 //inicializo los casos de uso e inyecto las dependencias de prestamos:
 var realizarPrestamo = new RealizarPrestamoUseCase(repositorioPrestamo, repositorioLibro);
@@ -44,19 +45,19 @@ var listarDocentes = new ListarDocentesUseCase(repositorioDocente);
 var modificarDocente = new ModificarDocenteUseCase(repositorioDocente);
 
 //codigo de prueba estudiantes y docentes:
-///*
+
 
 Estudiante[] estudiantes = {
-    new Estudiante(123456, "Juan", "Pérez", "123 Calle Principal", "Facultad de Ciencias", "555-123-4567", "juan.perez@example.com", 101, "Ingeniería Informática"),
-    new Estudiante(234567, "Ana", "López", "456 Avenida Secundaria", "Facultad de Ciencias Sociales", "555-234-5678", "ana.lopez@example.com", 102, "Psicología"),
-    new Estudiante(345678, "Luis", "García", "789 Calle Secundaria", "Facultad de Ingeniería", "555-345-6789", "luis.garcia@example.com", 103, "Ingeniería Eléctrica"),
-    new Estudiante(456789, "María", "Martínez", "101 Calle Principal", "Facultad de Medicina", "555-456-7890", "maria.martinez@example.com", 104, "Medicina"),
-    new Estudiante(567890, "Carlos", "Fernández", "202 Avenida Principal", "Facultad de Artes", "555-567-8901", "carlos.fernandez@example.com", 105, "Artes Plásticas"),
-    new Estudiante(678901, "Laura", "Rodríguez", "303 Avenida Secundaria", "Facultad de Derecho", "555-678-9012", "laura.rodriguez@example.com", 106, "Derecho"),
-    new Estudiante(789012, "Miguel", "Gómez", "404 Calle Principal", "Facultad de Economía", "555-789-0123", "miguel.gomez@example.com", 107, "Economía"),
-    new Estudiante(890123, "Sofía", "Sánchez", "505 Avenida Principal", "Facultad de Ciencias de la Salud", "555-890-1234", "sofia.sanchez@example.com", 108, "Enfermería"),
-    new Estudiante(901234, "Pedro", "Hernández", "606 Avenida Secundaria", "Facultad de Ciencias Naturales", "555-901-2345", "pedro.hernandez@example.com", 109, "Biología"),
-    new Estudiante(012345, "Isabel", "Torres", "707 Calle Principal", "Facultad de Ciencias de la Computación","555-012-345", "isabel.torres@example.com", 110, "Ciencias de la Computación")
+    new Estudiante(123456, "Juan",  "Pérez",    "123 Calle Principal",      "Facultad de Ciencias",                     "555-123-4567", "juan.perez@example.com",           101, "Ingeniería Informática"),
+    new Estudiante(234567, "Ana",   "López",    "456 Avenida Secundaria",   "Facultad de Ciencias Sociales",            "555-234-5678", "ana.lopez@example.com",            102, "Psicología"),
+    new Estudiante(345678, "Luis",  "García",   "789 Calle Secundaria",     "Facultad de Ingeniería",                   "555-345-6789", "luis.garcia@example.com",          103, "Ingeniería Eléctrica"),
+    new Estudiante(456789, "María", "Martínez", "101 Calle Principal",      "Facultad de Medicina",                     "555-456-7890", "maria.martinez@example.com",       104, "Medicina"),
+    new Estudiante(567890, "Carlos","Fernández","202 Avenida Principal",    "Facultad de Artes",                        "555-567-8901", "carlos.fernandez@example.com",     105, "Artes Plásticas"),
+    new Estudiante(678901, "Laura", "Rodríguez","303 Avenida Secundaria",   "Facultad de Derecho",                      "555-678-9012", "laura.rodriguez@example.com",      106, "Derecho"),
+    new Estudiante(789012, "Miguel","Gómez",    "404 Calle Principal",      "Facultad de Economía",                     "555-789-0123", "miguel.gomez@example.com",         107, "Economía"),
+    new Estudiante(890123, "Sofía", "Sánchez",  "505 Avenida Principal",    "Facultad de Ciencias de la Salud",         "555-890-1234", "sofia.sanchez@example.com",        108, "Enfermería"),
+    new Estudiante(901234, "Pedro", "Hernández","606 Avenida Secundaria",   "Facultad de Ciencias Naturales",           "555-901-2345", "pedro.hernandez@example.com",      109, "Biología"),
+    new Estudiante(012345, "Isabel","Torres",   "707 Calle Principal",      "Facultad de Ciencias de la Computación",   "555-012-345",  "isabel.torres@example.com",        110, "Ciencias de la Computación")
 };
 
 foreach (Estudiante est in estudiantes)
@@ -64,9 +65,9 @@ foreach (Estudiante est in estudiantes)
 
 
 Docente[] docentes = {
-    new Docente(12345, "Juan", "Pérez", "Calle 123; Ciudad Universitaria", "Facultad de Ciencias", "555-123-4567", "juan.perez@example.com", 67890, 2010),
-    new Docente(54321, "María", "Gómez", "Avenida 456; Ciudad Universitaria", "Facultad de Artes", "555-987-6543", "maria.gomez@example.com", 54321, 2008),
-    new Docente(98765, "Pedro", "López", "Calle 789; Ciudad Universitaria", "Facultad de Ingeniería", "555-234-5678", "pedro.lopez@example.com", 34567, 2012)
+    new Docente(12345, "Juan",  "Pérez", "Calle 123; Ciudad Universitaria",     "Facultad de Ciencias",     "555-123-4567", "juan.perez@example.com",   67890, 2010),
+    new Docente(54321, "María", "Gómez", "Avenida 456; Ciudad Universitaria",   "Facultad de Artes",        "555-987-6543", "maria.gomez@example.com",  54321, 2008),
+    new Docente(98765, "Pedro", "López", "Calle 789; Ciudad Universitaria",     "Facultad de Ingeniería",   "555-234-5678", "pedro.lopez@example.com",  34567, 2012)
 };
 
 foreach (Docente doc in docentes)
@@ -80,9 +81,13 @@ bajaEstudiante.Ejecutar(6);
 bajaDocente.Ejecutar(11);
 
 
-modificarDocente.Ejecutar( new Docente(10 ,999, "michael" , "jackson" , "santa barbara-california" , "Academia Universitaria de Baile" , "0800-01101001" , "michael.jack@oficial.com" , 123 , 2000) );
+modificarDocente.Ejecutar( new Docente(10 ,999, "michael" , "jackson" , "santa barbara-california" , 
+                                                "Academia Universitaria de Baile" , "0800-01101001" , "michael.jack@oficial.com" 
+                                              , 123 , 2000) );
 
-modificarEstudiante.Ejecutar(new Estudiante(0, 23456, "Tony", "Stark", "Torre Stark Ciudad de los Vengadores", "Facultad de Ingeniería Avanzada", "555-789-0123", "tony.stark@example.com", 272, "ingenieria mecatronica" ) );
+modificarEstudiante.Ejecutar(new Estudiante(0, 23456, "Tony", "Stark", "Torre Stark Ciudad de los Vengadores", 
+                                                      "Facultad de Ingeniería Avanzada", "555-789-0123", "tony.stark@example.com", 
+                                                      272, "ingenieria mecatronica" ) );
 
 
 Console.WriteLine("\n\nlistando docentes: \n");
@@ -93,7 +98,7 @@ Console.WriteLine("\n\nlistando estudiantes: ");
 foreach (Estudiante est in listarEstudiantes.Ejecutar())
     Console.WriteLine(est);
 
-//*/
+
 
 
 
@@ -101,6 +106,7 @@ foreach (Estudiante est in listarEstudiantes.Ejecutar())
 
 //codigo de prueba libros:
 ///*
+
 
 //inicializo los casos de uso e inyecto las dependencias de libros:
 var altaLibro = new AltaLibroUseCase(repositorioLibro);
@@ -131,7 +137,7 @@ foreach (Libro libro in libros)
     altaLibro.Ejecutar(libro);    
 
 //elimino el libro con esa id:
-// bajaLibro.Ejecutar(6);
+//bajaLibro.Ejecutar(6);
 
 //modifico el libro 0 y 7:  (lo remplazo con el señor de los anillos)
 modificarLibro.Ejecutar(new Libro(0,"J.R.R. Tolkien","La Comunidad del Anillo",1954,"Fantasía",1));
@@ -140,6 +146,7 @@ modificarLibro.Ejecutar(new Libro(7,"J.R.R. Tolkien","Las Dos Torres",1954,"Fant
 
 
 //listo en consola todos los libros guardados
+Console.WriteLine("\n\nlistando libros: ");
 foreach(Libro libro in listarLibros.Ejecutar()){
     Console.WriteLine(libro);
 }
@@ -149,14 +156,14 @@ foreach(Libro libro in listarLibros.Ejecutar()){
 //*/
 
 
-
-
 //codigo de prueba prestamos:
-// /*
+ ///*
+ 
 Prestamo[] prestamos = {
     new Prestamo(0,0,DateTime.Now),
-    new Prestamo(1,1,DateTime.Now),
-
+    new Prestamo(1,2,DateTime.Now),
+    new Prestamo(5,5,DateTime.Now),
+    new Prestamo(3,1,DateTime.Now)
 };
 
 foreach (Prestamo prestamo in prestamos)
@@ -174,6 +181,13 @@ Console.WriteLine("\n prestamos: \n\n");
 foreach (Prestamo p in listarPrestamos.Ejecutar()){
     Console.WriteLine(p);
 }
-// */
+
+Console.WriteLine("\n prestamos activos: \n\n");
+
+foreach (Prestamo p in listarPrestamosActivos.Ejecutar()){
+    Console.WriteLine(p);
+}
+
+ //*/
 
 

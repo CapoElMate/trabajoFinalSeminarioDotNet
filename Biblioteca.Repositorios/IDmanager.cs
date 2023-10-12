@@ -8,7 +8,7 @@ public static class IDmanager{
     //la idea es tener un archivo con la ultima id de cada una de las entidades.
 
     private static readonly string nombreArchivo = "IDcounters.txt";
-    public static int Obtener(string entidad){
+    public static int obtener(string entidad){
         
         int ultimoID=0;
 
@@ -77,6 +77,8 @@ public static class IDmanager{
 
             string copiaArchivo="";
 
+            bool seEncontro = false;
+
             //mientras no llegue al final del archivo:
             while(!sr.EndOfStream){
                 
@@ -89,6 +91,7 @@ public static class IDmanager{
                 if( (linea != null) && linea.Split(':')[0].Contains(entidad) ){
                     //concateno a copia archivo <entidad>:<id+1>
                     copiaArchivo += $"{entidad}:{int.Parse(linea.Split(':')[1]) + 1}\n"; // INCREMENTO en 1 el id
+                    seEncontro = true;
                 }else
                     copiaArchivo += linea+"\n"; //copio esa linea
 
@@ -100,7 +103,11 @@ public static class IDmanager{
             if(copiaArchivo != ""){
                 using var sw = new StreamWriter(nombreArchivo);
                 sw.Write(copiaArchivo);
-                //Console.WriteLine(copiaArchivo); //DEBUG
+                sw.Close();
+                
+                if(!seEncontro)
+                    throw new Exception("error, no se encontro esa entidad para incrementar");
+                    
             }
             else{
                 throw new Exception("error, archivo IDs vacio");
@@ -111,7 +118,7 @@ public static class IDmanager{
         //DEBUG:
         catch(FileNotFoundException)
         {
-            throw new FileNotFoundException("probablemente esta modificando antes de buscar");
+            throw new FileNotFoundException("error, no se encontro el archivo, probablemente esta modificando antes de buscar");
         }
 
     }

@@ -35,7 +35,7 @@ public class RepositorioPrestamoTxt: IRepositorioPrestamo
     public void realizarPrestamo(Prestamo prestamo)
     {
         //NOTA: no checkeo si se repite el id del prestamo, no deberia pasar.
-        prestamo.id = IDmanager.Obtener("prestamo");  //modifica el id del prestamo para tener el de id manager
+        prestamo.id = IDmanager.obtener("prestamo");  //modifica el id del prestamo para tener el de id manager
         IDmanager.incrementar("prestamo");//hace que el id para esta categoria aumente en 1
 
         using var sw = new StreamWriter(nombreArchivo, true);//construyo un stream writer
@@ -53,10 +53,12 @@ public class RepositorioPrestamoTxt: IRepositorioPrestamo
         // remplazarlo en la lista,
         // y transformar la lista de nuevo en texto.
 
+        if(prestamoIngresado.estaDevuelto == false)
+            throw new Exception("el prestamo ingresado no esta devuelto.");
+
         var listaPrestamos = listarPrestamos();
 
         bool encontrado = false;
-        
         
         //aqui uso un while en vez de un for para salir cuando encuentro el libro
         int i = 0;
