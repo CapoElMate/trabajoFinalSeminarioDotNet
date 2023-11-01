@@ -3,10 +3,10 @@ namespace Biblioteca.Aplicacion;
 
 
 
-public class ListarPrestamosCU
+public class ListarPrestamosUseCase
 {
     private readonly IRepositorioPrestamo _repo;
-    public ListarPrestamosCU(IRepositorioPrestamo repo)
+    public ListarPrestamosUseCase(IRepositorioPrestamo repo)
     {
         this._repo = repo;
     }

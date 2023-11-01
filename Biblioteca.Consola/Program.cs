@@ -27,10 +27,10 @@ var repositorioLibro = new RepositorioLibroTxt();               //inicializo el 
 
 
 //inicializo los casos de uso e inyecto las dependencias de prestamos:
-var realizarPrestamo = new RealizarPrestamoCU(repositorioPrestamo, repositorioLibro);
-var devolverLibro = new DevolverLibroCU(repositorioPrestamo);
-var listarPrestamosActivos = new ListarPrestamosActivosCU(repositorioPrestamo);
-var listarPrestamos = new ListarPrestamosCU(repositorioPrestamo);
+var realizarPrestamo = new RealizarPrestamoUseCase(repositorioPrestamo, repositorioLibro);
+var devolverLibro = new DevolverLibroUseCase(repositorioPrestamo);
+var listarPrestamosActivos = new ListarPrestamosActivosUseCase(repositorioPrestamo);
+var listarPrestamos = new ListarPrestamosUseCase(repositorioPrestamo);
 
 //inicializo los casos de uso e inyecto las dependencias de estudiantes:
 var altaEstudiante = new AltaEstudianteUseCase(repositorioEstudiante);
