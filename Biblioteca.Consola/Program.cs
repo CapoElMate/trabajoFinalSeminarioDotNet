@@ -14,16 +14,7 @@ var repositorioDocente = new RepositorioDocenteTxt();           //inicializo el 
 var repositorioPrestamo = new RepositorioPrestamoTxt();         //inicializo el repositorio
 var repositorioLibro = new RepositorioLibroTxt();               //inicializo el repositorio      
 
-/*
-    int cantLibrosPrestados(int idLibro);
 
-    void realizarPrestamo(Prestamo prestamo);
-    void devolverLibro(Prestamo devolucion);   
-
-    List<Prestamo> listarPrestamos();
-
-    List<Prestamo> listarPrestamosActivos();
-*/
 
 
 //inicializo los casos de uso e inyecto las dependencias de prestamos:
