@@ -1,0 +1,29 @@
+0,23456,Tony,Stark,Torre Stark Ciudad de los Vengadores,Facultad de Ingeniería Avanzada,555-789-0123,tony.stark@example.com,272,ingenieria mecatronica
+1,234567,Ana,López,456 Avenida Secundaria,Facultad de Ciencias Sociales,555-234-5678,ana.lopez@example.com,102,Psicología
+2,345678,Luis,García,789 Calle Secundaria,Facultad de Ingeniería,555-345-6789,luis.garcia@example.com,103,Ingeniería Eléctrica
+3,456789,María,Martínez,101 Calle Principal,Facultad de Medicina,555-456-7890,maria.martinez@example.com,104,Medicina
+4,567890,Carlos,Fernández,202 Avenida Principal,Facultad de Artes,555-567-8901,carlos.fernandez@example.com,105,Artes Plásticas
+5,678901,Laura,Rodríguez,303 Avenida Secundaria,Facultad de Derecho,555-678-9012,laura.rodriguez@example.com,106,Derecho
+7,890123,Sofía,Sánchez,505 Avenida Principal,Facultad de Ciencias de la Salud,555-890-1234,sofia.sanchez@example.com,108,Enfermería
+8,901234,Pedro,Hernández,606 Avenida Secundaria,Facultad de Ciencias Naturales,555-901-2345,pedro.hernandez@example.com,109,Biología
+9,12345,Isabel,Torres,707 Calle Principal,Facultad de Ciencias de la Computación,555-012-345,isabel.torres@example.com,110,Ciencias de la Computación
+13,123456,Juan,Pérez,123 Calle Principal,Facultad de Ciencias,555-123-4567,juan.perez@example.com,101,Ingeniería Informática
+14,234567,Ana,López,456 Avenida Secundaria,Facultad de Ciencias Sociales,555-234-5678,ana.lopez@example.com,102,Psicología
+15,345678,Luis,García,789 Calle Secundaria,Facultad de Ingeniería,555-345-6789,luis.garcia@example.com,103,Ingeniería Eléctrica
+16,456789,María,Martínez,101 Calle Principal,Facultad de Medicina,555-456-7890,maria.martinez@example.com,104,Medicina
+17,567890,Carlos,Fernández,202 Avenida Principal,Facultad de Artes,555-567-8901,carlos.fernandez@example.com,105,Artes Plásticas
+18,678901,Laura,Rodríguez,303 Avenida Secundaria,Facultad de Derecho,555-678-9012,laura.rodriguez@example.com,106,Derecho
+19,789012,Miguel,Gómez,404 Calle Principal,Facultad de Economía,555-789-0123,miguel.gomez@example.com,107,Economía
+20,890123,Sofía,Sánchez,505 Avenida Principal,Facultad de Ciencias de la Salud,555-890-1234,sofia.sanchez@example.com,108,Enfermería
+21,901234,Pedro,Hernández,606 Avenida Secundaria,Facultad de Ciencias Naturales,555-901-2345,pedro.hernandez@example.com,109,Biología
+22,12345,Isabel,Torres,707 Calle Principal,Facultad de Ciencias de la Computación,555-012-345,isabel.torres@example.com,110,Ciencias de la Computación
+26,123456,Juan,Pérez,123 Calle Principal,Facultad de Ciencias,555-123-4567,juan.perez@example.com,101,Ingeniería Informática
+27,234567,Ana,López,456 Avenida Secundaria,Facultad de Ciencias Sociales,555-234-5678,ana.lopez@example.com,102,Psicología
+28,345678,Luis,García,789 Calle Secundaria,Facultad de Ingeniería,555-345-6789,luis.garcia@example.com,103,Ingeniería Eléctrica
+29,456789,María,Martínez,101 Calle Principal,Facultad de Medicina,555-456-7890,maria.martinez@example.com,104,Medicina
+30,567890,Carlos,Fernández,202 Avenida Principal,Facultad de Artes,555-567-8901,carlos.fernandez@example.com,105,Artes Plásticas
+31,678901,Laura,Rodríguez,303 Avenida Secundaria,Facultad de Derecho,555-678-9012,laura.rodriguez@example.com,106,Derecho
+32,789012,Miguel,Gómez,404 Calle Principal,Facultad de Economía,555-789-0123,miguel.gomez@example.com,107,Economía
+33,890123,Sofía,Sánchez,505 Avenida Principal,Facultad de Ciencias de la Salud,555-890-1234,sofia.sanchez@example.com,108,Enfermería
+34,901234,Pedro,Hernández,606 Avenida Secundaria,Facultad de Ciencias Naturales,555-901-2345,pedro.hernandez@example.com,109,Biología
+35,12345,Isabel,Torres,707 Calle Principal,Facultad de Ciencias de la Computación,555-012-345,isabel.torres@example.com,110,Ciencias de la Computación

@@ -36,7 +36,7 @@ public class RealizarPrestamoUseCase
     public void Ejecutar(Prestamo prestamo)
     {   
         
-        int idLibro = prestamo.libro; 
+        int idLibro = prestamo.LibroId; 
         
         //Console.WriteLine(repoPrestamo.cantLibrosPrestados(idLibro) + "<" + obtenerCantEjemplaresLibro(idLibro) +"?"); //DEBUG
         

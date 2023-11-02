@@ -3,7 +3,14 @@ namespace Biblioteca.Aplicacion;
 public class Docente : Persona{
 
     public int numeroMatricula{get;set;}
-    
+
+
+    //constructor vacio. Esto soluciona un error con entity framework
+    public Docente():base()
+    {
+        this.numeroMatricula= -1;
+        this.añoInicioDocencia = 0;
+    }  
 
     public Docente(int id , int numeroCarnet, string nombre, string apellido, string direccion,
                    string facultad, string telefono, string correoElectronico,

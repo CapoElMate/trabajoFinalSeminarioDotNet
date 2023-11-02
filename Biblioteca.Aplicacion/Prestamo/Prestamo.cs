@@ -10,8 +10,8 @@ fecha de préstamo, fecha de devolución y estado del libro devuelto (en buen es
 
 //para cuando creo el prestamo:
 public int id {get; set;}
-public int persona {get;}
-public int libro {get;}
+public int PersonaId {get;}
+public int LibroId {get;}
 public DateTime fechaDePrestamo {get;}
 
 public bool estaDevuelto{get; protected set;}
@@ -20,23 +20,34 @@ public DateTime fechaDeDevolucion {get; protected set;}
 public bool estaEnBuenEstado{get; protected set;}
 
 
+
+
 //constructor:
-    public Prestamo(int persona, int libro, DateTime fechaDePrestamo){
+
+    public Prestamo(){
         estaDevuelto = false;
         this.id = -1;
-        this.persona = persona;
-        this.libro = libro;
+        this.PersonaId = -1;
+        this.LibroId = -1;
+        this.fechaDePrestamo = DateTime.MinValue;
+    }
+
+    public Prestamo(int PersonaId, int libro, DateTime fechaDePrestamo){
+        estaDevuelto = false;
+        this.id = -1;
+        this.PersonaId = PersonaId;
+        this.LibroId = libro;
         this.fechaDePrestamo = fechaDePrestamo;
         //los inicio en null porque todavia no toman un valor.
             // fechaDeDevolucion = null;
             // estaEnBuenEstado = null;
     }
 
-    public Prestamo(int id ,int persona, int libro, DateTime fechaDePrestamo){
+    public Prestamo(int id ,int PersonaId, int libro, DateTime fechaDePrestamo){
         estaDevuelto = false;
         this.id = id;
-        this.persona = persona;
-        this.libro = libro;
+        this.PersonaId = PersonaId;
+        this.LibroId = libro;
         this.fechaDePrestamo = fechaDePrestamo;
     }
 
@@ -49,7 +60,7 @@ public bool estaEnBuenEstado{get; protected set;}
     public override string ToString(){
         string str = "";
 
-        str=$"{id},{persona},{libro},{fechaDePrestamo.ToString("yyyy-MM-dd")}"; //despues usar parse exact
+        str=$"{id},{PersonaId},{LibroId},{fechaDePrestamo.ToString("yyyy-MM-dd")}"; //despues usar parse exact
 
         if(estaDevuelto)
             str += $",{fechaDeDevolucion.ToString("yyyy-MM-dd")},{estaEnBuenEstado}";
