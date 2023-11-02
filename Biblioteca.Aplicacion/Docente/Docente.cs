@@ -9,7 +9,7 @@ public class Docente : Persona{
     public Docente():base()
     {
         this.numeroMatricula= -1;
-        this.añoInicioDocencia = 0;
+        this.añoInicioDocencia =1901;
     }  
 
     public Docente(int id , int numeroCarnet, string nombre, string apellido, string direccion,

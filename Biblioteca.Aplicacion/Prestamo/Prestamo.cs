@@ -9,7 +9,7 @@ fecha de préstamo, fecha de devolución y estado del libro devuelto (en buen es
 */
 
 //para cuando creo el prestamo:
-public int id {get; set;}
+public int? id {get; set;}
 public int PersonaId {get;}
 public int LibroId {get;}
 public DateTime fechaDePrestamo {get;}
@@ -26,28 +26,29 @@ public bool estaEnBuenEstado{get; protected set;}
 
     public Prestamo(){
         estaDevuelto = false;
-        this.id = -1;
+        this.id = null;
         this.PersonaId = -1;
         this.LibroId = -1;
         this.fechaDePrestamo = DateTime.MinValue;
     }
 
-    public Prestamo(int PersonaId, int libro, DateTime fechaDePrestamo){
+    public Prestamo(int PersonaId, int libroId, DateTime fechaDePrestamo){
         estaDevuelto = false;
-        this.id = -1;
+        
+        this.id = null;
         this.PersonaId = PersonaId;
-        this.LibroId = libro;
+        this.LibroId = libroId;
         this.fechaDePrestamo = fechaDePrestamo;
         //los inicio en null porque todavia no toman un valor.
             // fechaDeDevolucion = null;
             // estaEnBuenEstado = null;
     }
 
-    public Prestamo(int id ,int PersonaId, int libro, DateTime fechaDePrestamo){
+    public Prestamo(int id ,int PersonaId, int libroId, DateTime fechaDePrestamo){
         estaDevuelto = false;
         this.id = id;
         this.PersonaId = PersonaId;
-        this.LibroId = libro;
+        this.LibroId = libroId;
         this.fechaDePrestamo = fechaDePrestamo;
     }
 

@@ -3,9 +3,9 @@ namespace Biblioteca.Aplicacion;
 
 public class Libro{
 
-    public int id {get; set;}
-    public string? autor {get;}
-    public string? titulo {get;}
+    public int? Id {get; set;}
+    public string? autor {get; protected set;}
+    public string? titulo {get; protected set;}
     
     
     //propiedad de navegacion:
@@ -23,7 +23,7 @@ public class Libro{
                                                 :throw new ArgumentException("el año de publi es mayor que el actual");
     }
 
-    public string? genero {get;}
+    public string? genero {get;protected set;}
 
     public int numeroEjemplares {get; set;}
     
@@ -32,7 +32,7 @@ public class Libro{
 
     //constructor vacio. Esto soluciona un error con entity framework
     public Libro(){
-        this.id = -1;
+        this.Id = null;
         añoPublicacion = 0;
         numeroEjemplares = 0;
         autor = "";
@@ -42,7 +42,7 @@ public class Libro{
     }
 
     public Libro(string? autor, string? titulo, int añoPublicacion, string? genero, int numeroEjemplares){
-        this.id = -1;
+        this.Id = null;
         this.autor = autor;
         this.titulo = titulo;
         this.añoPublicacion = añoPublicacion;
@@ -51,8 +51,8 @@ public class Libro{
         Prestamos = new List<Prestamo>();
     }
 
-    public Libro(int id,string? autor, string? titulo, int añoPublicacion, string? genero, int numeroEjemplares){
-        this.id = id;
+    public Libro(int Id,string? autor, string? titulo, int añoPublicacion, string? genero, int numeroEjemplares){
+        this.Id = Id;
         this.autor = autor;
         this.titulo = titulo;
         this.añoPublicacion = añoPublicacion;
@@ -66,7 +66,7 @@ public class Libro{
 
     public override string ToString()
     {
-        return $"{id},{autor},{titulo},{añoPublicacion},{genero},{numeroEjemplares}";
+        return $"{Id},{autor},{titulo},{añoPublicacion},{genero},{numeroEjemplares}";
     }
 
 }
