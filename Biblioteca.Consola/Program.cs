@@ -14,21 +14,20 @@ Console.Clear();
 Console.Clear();
 
 
+
 var repositorioDocente = new RepositorioDocenteSQLite();           //inicializo el repositorio
 var repositorioEstudiante = new RepositorioEstudianteSQLite();     //inicializo el repositorio   
 var repositorioLibro = new RepositorioLibroSQLite();               //inicializo el repositorio      
-
-
-// var repositorioPrestamo = new RepositorioPrestamoTxt();         //inicializo el repositorio
+var repositorioPrestamo = new RepositorioPrestamoSQLite();         //inicializo el repositorio
 
 
 
 
 // //inicializo los casos de uso e inyecto las dependencias de prestamos:
-// var realizarPrestamo = new RealizarPrestamoUseCase(repositorioPrestamo, repositorioLibro);
-// var devolverLibro = new DevolverLibroUseCase(repositorioPrestamo);
-// var listarPrestamosActivos = new ListarPrestamosActivosUseCase(repositorioPrestamo);
-// var listarPrestamos = new ListarPrestamosUseCase(repositorioPrestamo);
+var realizarPrestamo = new RealizarPrestamoUseCase(repositorioPrestamo, repositorioLibro);
+var devolverLibro = new DevolverLibroUseCase(repositorioPrestamo);
+var listarPrestamosActivos = new ListarPrestamosActivosUseCase(repositorioPrestamo);
+var listarPrestamos = new ListarPrestamosUseCase(repositorioPrestamo);
 
 // //inicializo los casos de uso e inyecto las dependencias de estudiantes:
 var altaEstudiante = new AltaEstudianteUseCase(repositorioEstudiante);
@@ -153,15 +152,15 @@ Console.WriteLine(verLibro.Ejecutar(1));
 
 
 //codigo de prueba prestamos:
- ///*
+
  
- /*
+ 
  
 Prestamo[] prestamos = {
-    new Prestamo(0,0,DateTime.Now),
+    new Prestamo(13,1,DateTime.Now),
     new Prestamo(1,2,DateTime.Now),
     new Prestamo(5,5,DateTime.Now),
-    new Prestamo(3,1,DateTime.Now)
+    new Prestamo(3,3,DateTime.Now)
 };
 
 foreach (Prestamo prestamo in prestamos)
@@ -186,6 +185,12 @@ foreach (Prestamo p in listarPrestamosActivos.Ejecutar()){
     Console.WriteLine(p);
 }
 
- //*/
+
+//elimino un estudiante para probar la eliminacion en cascada:
+bajaEstudiante.Ejecutar(5);
+
+//elimino un libro para probar la eliminacion en cascada:
+bajaLibro.Ejecutar(1);
+ 
 
 

@@ -10,9 +10,9 @@ fecha de préstamo, fecha de devolución y estado del libro devuelto (en buen es
 
 //para cuando creo el prestamo:
 public int? id {get; set;}
-public int PersonaId {get;}
-public int LibroId {get;}
-public DateTime fechaDePrestamo {get;}
+public int PersonaId {get; protected set;}
+public int LibroId {get;protected set;}
+public DateTime fechaDePrestamo {get;protected set;}
 
 public bool estaDevuelto{get; protected set;}
 //para cuando lo devuevo:
@@ -39,9 +39,6 @@ public bool estaEnBuenEstado{get; protected set;}
         this.PersonaId = PersonaId;
         this.LibroId = libroId;
         this.fechaDePrestamo = fechaDePrestamo;
-        //los inicio en null porque todavia no toman un valor.
-            // fechaDeDevolucion = null;
-            // estaEnBuenEstado = null;
     }
 
     public Prestamo(int id ,int PersonaId, int libroId, DateTime fechaDePrestamo){
