@@ -2,14 +2,14 @@ namespace Biblioteca.Aplicacion;
 
 public class Persona
 {
-    public int? Id {get; set;}
-    public int numeroCarnet {get; protected set;}
-    public string nombre {get;protected  set;}
-    public string apellido {get; protected set;}
-    public string direccion {get; protected set;}
-    public string facultad {get; protected set;}
-    public string telefono {get; protected set;}
-    public string correoElectronico {get;protected set;}
+    public int? Id {get;protected set;}
+    public int numeroCarnet {get; set;}
+    public string nombre {get; set;}
+    public string apellido {get; set;}
+    public string direccion {get; set;}
+    public string facultad {get; set;}
+    public string telefono {get; set;}
+    public string correoElectronico {get;set;}
     
 
     //propiedad de navegacion:

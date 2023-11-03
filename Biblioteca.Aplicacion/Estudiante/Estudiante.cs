@@ -2,8 +2,8 @@ namespace Biblioteca.Aplicacion;
 
 public class Estudiante : Persona
 {
-    public int numeroAlumno{get; protected set;}
-    public string carrera{get; protected set;}
+    public int numeroAlumno{get; set;}
+    public string carrera{get; set;}
 
 
     //constructor vacio. Esto soluciona un error con entity framework
