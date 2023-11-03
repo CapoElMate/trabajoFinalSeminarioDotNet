@@ -1,8 +1,0 @@
-10,999,michael,jackson,santa barbara-california,Academia Universitaria de Baile,0800-01101001,michael.jack@oficial.com,123,2000
-12,98765,Pedro,López,Calle 789; Ciudad Universitaria,Facultad de Ingeniería,555-234-5678,pedro.lopez@example.com,34567,2012
-23,12345,Juan,Pérez,Calle 123; Ciudad Universitaria,Facultad de Ciencias,555-123-4567,juan.perez@example.com,67890,2010
-24,54321,María,Gómez,Avenida 456; Ciudad Universitaria,Facultad de Artes,555-987-6543,maria.gomez@example.com,54321,2008
-25,98765,Pedro,López,Calle 789; Ciudad Universitaria,Facultad de Ingeniería,555-234-5678,pedro.lopez@example.com,34567,2012
-36,12345,Juan,Pérez,Calle 123; Ciudad Universitaria,Facultad de Ciencias,555-123-4567,juan.perez@example.com,67890,2010
-37,54321,María,Gómez,Avenida 456; Ciudad Universitaria,Facultad de Artes,555-987-6543,maria.gomez@example.com,54321,2008
-38,98765,Pedro,López,Calle 789; Ciudad Universitaria,Facultad de Ingeniería,555-234-5678,pedro.lopez@example.com,34567,2012

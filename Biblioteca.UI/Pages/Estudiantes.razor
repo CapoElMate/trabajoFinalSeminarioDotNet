@@ -1,0 +1,56 @@
+@page "/estudiantes"
+@using Biblioteca.UI.Data;
+@using Biblioteca.Repositorios;
+
+@inject ListarEstudiantesUseCase ListarEstudiantesUseCase;
+
+<PageTitle>Estudiantes</PageTitle>
+<h1> Estudiantes </h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>APELLIDO</th>
+            <th>NRO. CARNET</th>
+            <th>FACULTAD</th>
+            <th>CARRERA</th>
+            <th>NRO. ALUMNO</th>
+            <th>TELEFONO</th>
+            <th>CORREO ELECTRONICO</th>
+            <th>OPCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var est in _lista)
+        {
+            <tr>
+                <td>@est.Id</td>
+                <td>@est.nombre</td>
+                <td>@est.apellido</td>
+                <td>@est.numeroCarnet</td>
+                <td>@est.facultad</td>
+                <td>@est.carrera</td>
+                <td>@est.numeroAlumno</td>
+                <td>@est.telefono</td>
+                <td>@est.correoElectronico</td>
+                <td>opciones</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+@code{
+    List<Estudiante> _lista = new List<Estudiante>();
+    
+    protected override void OnInitialized()
+    {
+        _lista = ListarEstudiantesUseCase.Ejecutar();
+    }
+
+    
+
+}

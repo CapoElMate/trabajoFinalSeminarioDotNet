@@ -3,33 +3,36 @@
 using Biblioteca.Aplicacion;
 using Biblioteca.Repositorios;
 
-using (var context = new BibliotecaContext())
-{
-    context.Database.EnsureCreated();
-}
-
 //debug:
 Console.ForegroundColor = ConsoleColor.Green; //esto lo hago para que se vea bien en la consola de mi pc.
 Console.Clear();
 Console.Clear();
 
 
+var repositorioEstudiante = new RepositorioEstudianteTxt();     //inicializo el repositorio   
+var repositorioDocente = new RepositorioDocenteTxt();           //inicializo el repositorio
+var repositorioPrestamo = new RepositorioPrestamoTxt();         //inicializo el repositorio
+var repositorioLibro = new RepositorioLibroTxt();               //inicializo el repositorio      
 
-var repositorioDocente = new RepositorioDocenteSQLite();           //inicializo el repositorio
-var repositorioEstudiante = new RepositorioEstudianteSQLite();     //inicializo el repositorio   
-var repositorioLibro = new RepositorioLibroSQLite();               //inicializo el repositorio      
-var repositorioPrestamo = new RepositorioPrestamoSQLite();         //inicializo el repositorio
+/*
+    int cantLibrosPrestados(int idLibro);
+
+    void realizarPrestamo(Prestamo prestamo);
+    void devolverLibro(Prestamo devolucion);   
+
+    List<Prestamo> listarPrestamos();
+
+    List<Prestamo> listarPrestamosActivos();
+*/
 
 
-
-
-// //inicializo los casos de uso e inyecto las dependencias de prestamos:
+//inicializo los casos de uso e inyecto las dependencias de prestamos:
 var realizarPrestamo = new RealizarPrestamoUseCase(repositorioPrestamo, repositorioLibro);
 var devolverLibro = new DevolverLibroUseCase(repositorioPrestamo);
 var listarPrestamosActivos = new ListarPrestamosActivosUseCase(repositorioPrestamo);
 var listarPrestamos = new ListarPrestamosUseCase(repositorioPrestamo);
 
-// //inicializo los casos de uso e inyecto las dependencias de estudiantes:
+//inicializo los casos de uso e inyecto las dependencias de estudiantes:
 var altaEstudiante = new AltaEstudianteUseCase(repositorioEstudiante);
 var bajaEstudiante = new BajaEstudianteUseCase(repositorioEstudiante);
 var listarEstudiantes = new ListarEstudiantesUseCase(repositorioEstudiante);
@@ -41,6 +44,7 @@ var bajaDocente = new BajaDocenteUseCase(repositorioDocente);
 var listarDocentes = new ListarDocentesUseCase(repositorioDocente);
 var modificarDocente = new ModificarDocenteUseCase(repositorioDocente);
 
+//codigo de prueba estudiantes y docentes:
 
 
 Estudiante[] estudiantes = {
@@ -73,17 +77,17 @@ foreach (Docente doc in docentes)
 //elimino el estudiantes con esa id:
 bajaEstudiante.Ejecutar(6);
 
-// elimino el docente con esa id:
+//elimino el docente con esa id:
 bajaDocente.Ejecutar(11);
 
 
-modificarDocente.Ejecutar( new Docente(12 ,999, "michael" , "jackson" , "santa barbara-california" , 
+modificarDocente.Ejecutar( new Docente(10 ,999, "michael" , "jackson" , "santa barbara-california" , 
                                                 "Academia Universitaria de Baile" , "0800-01101001" , "michael.jack@oficial.com" 
                                               , 123 , 2000) );
 
-// modificarEstudiante.Ejecutar(new Estudiante(0, 23456, "Tony", "Stark", "Torre Stark Ciudad de los Vengadores", 
-//                                                       "Facultad de Ingeniería Avanzada", "555-789-0123", "tony.stark@example.com", 
-//                                                       272, "ingenieria mecatronica" ) );
+modificarEstudiante.Ejecutar(new Estudiante(0, 23456, "Tony", "Stark", "Torre Stark Ciudad de los Vengadores", 
+                                                      "Facultad de Ingeniería Avanzada", "555-789-0123", "tony.stark@example.com", 
+                                                      272, "ingenieria mecatronica" ) );
 
 
 Console.WriteLine("\n\nlistando docentes: \n");
@@ -100,10 +104,11 @@ foreach (Estudiante est in listarEstudiantes.Ejecutar())
 
 
 
-// //codigo de prueba libros:
+//codigo de prueba libros:
+///*
 
 
-// //inicializo los casos de uso e inyecto las dependencias de libros:
+//inicializo los casos de uso e inyecto las dependencias de libros:
 var altaLibro = new AltaLibroUseCase(repositorioLibro);
 var verLibro = new VerLibroUseCase(repositorioLibro);
 var bajaLibro = new BajaLibroUseCase(repositorioLibro);
@@ -132,10 +137,10 @@ foreach (Libro libro in libros)
     altaLibro.Ejecutar(libro);    
 
 //elimino el libro con esa id:
-bajaLibro.Ejecutar(6);
+//bajaLibro.Ejecutar(6);
 
 //modifico el libro 0 y 7:  (lo remplazo con el señor de los anillos)
-modificarLibro.Ejecutar(new Libro(1,"J.R.R. Tolkien","La Comunidad del Anillo",1954,"Fantasía",1));
+modificarLibro.Ejecutar(new Libro(0,"J.R.R. Tolkien","La Comunidad del Anillo",1954,"Fantasía",1));
 modificarLibro.Ejecutar(new Libro(7,"J.R.R. Tolkien","Las Dos Torres",1954,"Fantasía",3));
 
 
@@ -145,22 +150,20 @@ Console.WriteLine("\n\nlistando libros: ");
 foreach(Libro libro in listarLibros.Ejecutar()){
     Console.WriteLine(libro);
 }
-Console.WriteLine();
-Console.WriteLine("ver libro:");
-Console.WriteLine(verLibro.Ejecutar(1));
 
+//Console.WriteLine(verLibro.Ejecutar(1));
+
+//*/
 
 
 //codigo de prueba prestamos:
-
- 
- 
+ ///*
  
 Prestamo[] prestamos = {
-    new Prestamo(13,1,DateTime.Now),
+    new Prestamo(0,0,DateTime.Now),
     new Prestamo(1,2,DateTime.Now),
     new Prestamo(5,5,DateTime.Now),
-    new Prestamo(3,3,DateTime.Now)
+    new Prestamo(3,1,DateTime.Now)
 };
 
 foreach (Prestamo prestamo in prestamos)
@@ -185,12 +188,6 @@ foreach (Prestamo p in listarPrestamosActivos.Ejecutar()){
     Console.WriteLine(p);
 }
 
-
-//elimino un estudiante para probar la eliminacion en cascada:
-bajaEstudiante.Ejecutar(5);
-
-//elimino un libro para probar la eliminacion en cascada:
-bajaLibro.Ejecutar(1);
- 
+ //*/
 
 

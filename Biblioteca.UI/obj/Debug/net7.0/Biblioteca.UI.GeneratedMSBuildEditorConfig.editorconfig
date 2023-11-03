@@ -1,0 +1,61 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Biblioteca.UI
+build_property.RootNamespace = Biblioteca.UI
+build_property.ProjectDir = F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.UI\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.UI
+build_property._RazorSourceGeneratorDebug = 
+
+[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Pages/Estudiantes.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0dWRpYW50ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Pages/FetchData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-z170pvz7ey
+
+[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-b80zd4icv5
+
+[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 

@@ -1,3 +1,0 @@
-persona:39
-libro:10
-prestamo:4
