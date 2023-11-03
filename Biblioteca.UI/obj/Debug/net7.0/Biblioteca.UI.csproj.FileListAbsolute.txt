@@ -67,3 +67,5 @@ F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Bib
 F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.UI\obj\Debug\net7.0\Biblioteca.UI.pdb
 F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.UI\obj\Debug\net7.0\Biblioteca.UI.genruntimeconfig.cache
 F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.UI\obj\Debug\net7.0\ref\Biblioteca.UI.dll
+F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.UI\obj\Debug\net7.0\scopedcss\Pages\estudiantes.razor.rz.scp.css
+F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.UI\obj\Debug\net7.0\scopedcss\Shared\CuadroDialogo.razor.rz.scp.css

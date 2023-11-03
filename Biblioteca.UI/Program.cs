@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 var iniciarBdd = new IniciarBdd();
 iniciarBdd.Ejecutar();
 
-//agregamos estos servicios al contenedor DI
+//agregamos estudiantes al contenedor DI
 builder.Services.AddTransient<AltaEstudianteUseCase>();
 builder.Services.AddTransient<BajaEstudianteUseCase>();
 builder.Services.AddTransient<ModificarEstudianteUseCase>();

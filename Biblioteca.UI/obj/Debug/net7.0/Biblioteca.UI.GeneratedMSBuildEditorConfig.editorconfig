@@ -24,14 +24,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Pages/Estudiantes.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0dWRpYW50ZXMucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Pages/FetchData.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -43,6 +35,14 @@ build_metadata.AdditionalFiles.CssScope =
 [F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Pages/Estudiantes.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0dWRpYW50ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-jvka48mo60
+
+[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Shared/CuadroDialogo.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEN1YWRyb0RpYWxvZ28ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-zk5s6xl7s1
 
 [F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
