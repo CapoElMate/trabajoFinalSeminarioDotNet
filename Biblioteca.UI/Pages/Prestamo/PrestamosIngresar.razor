@@ -4,8 +4,33 @@
         <div class="dialogo-contenido"> 
             <h3>Crear un prestamo</h3> <!-- cambia el titulo segun si el metodo es crear -->
 
-                <label>nombre:</label>
-            <input placeholder="nombre" @bind=prestamo.nombre>             
+                <label>persona:</label>
+
+                <EditForm Model="@listaPersonas">
+                
+                    <InputSelect id="FirstString" @bind-Value="personaSeleccionada">
+                        <option value="0">seleccionar persona</option>
+                        @foreach(Persona p in listaPersonas){
+                            <option value="@p.Id">@p.nombre</option> 
+                        }
+                    </InputSelect>
+                
+                </EditForm>
+
+                <EditForm Model="@listaLibros">
+
+                    <InputSelect id="FirstString" @bind-Value="libroSeleccionado">
+                        <option value="0">seleccionar libro</option>
+                        @foreach(Libro l in listaLibros){
+                            <option value="@l.Id">@l.titulo</option> 
+                        }
+                    </InputSelect>
+                
+                </EditForm>
+
+                <InputDate @bind-Value="prestamo.fechaDePrestamo"/>
+
+            @* <input placeholder="nombre" @bind=prestamo.nombre>              *@
             
 
             <br>
@@ -34,16 +59,16 @@
     public EventCallback OnRellenado{get;set;}
 
     [Parameter]
-    public List<Persona> listaPersonas{get;set;}
+    public List<Persona> listaPersonas{get;set;} = new List<Persona>();
     [Parameter]
-    public List<Libro> listaLibros{get;set;}
+    public List<Libro> listaLibros{get;set;} = new List<Libro>();
 
 
     private String accion = "";
 
     MensajeError msjError = null!;
 
-    private int? añoInicioDocencia,numeroMatricula,numeroCarnet;
+    public int personaSeleccionada,libroSeleccionado;
 
 
     protected override void OnParametersSet()
@@ -69,19 +94,9 @@
             msjError.mensaje = "hay campos vacios. por favor rellenalos.";
         }
         else{
-            prestamo.numeroCarnet = numeroCarnet ?? -1;
-            prestamo.numeroMatricula = numeroMatricula ?? -1;
-            
-            //si año de docencia es nulo, o si su valor no esta dentro de su rango correcto, toma su valor por defecto (1901)
-            try{
-                prestamo.añoInicioDocencia = añoInicioDocencia ?? 1901;           
-            }
-            catch(ArgumentException){
-                msjError.mensaje = "Error, el año de docencia no esta en el rango correcto";
-                return; // sale de CerrarYGuardar
-            }            
-            
             visible = false;
+            prestamo.LibroId = libroSeleccionado;
+            prestamo.PersonaId = personaSeleccionada;
             OnRellenado.InvokeAsync();
         }
 
@@ -89,9 +104,11 @@
 
     private bool algunCampoVacio(Prestamo prest){
        
-        return (prest.nombre == "")   || (prest.apellido == "")     || (prest.numeroCarnet == -1) ||
-        (prest.facultad == "")        || (prest.añoInicioPrestencia == 1901)      || (prest.numeroMatricula == -1) ||
-        (prest.telefono == "" )       || (prest.correoElectronico == "");
+        Console.WriteLine(personaSeleccionada);
+        Console.WriteLine(libroSeleccionado);
+
+       //NOTA: no verifico fecha todavia
+        return (personaSeleccionada == 0)   || (libroSeleccionado == 0)   ;
 
     }
 

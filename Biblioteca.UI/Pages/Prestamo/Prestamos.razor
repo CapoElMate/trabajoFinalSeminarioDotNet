@@ -49,9 +49,10 @@
             <tr>
                 <td>@prest.id</td>
                 <td>@prest.PersonaId</td>                
-                <td>@EncontrarPersonaUseCase.Ejecutar(prest.PersonaId)</td>
+                <td>@EncontrarPersonaUseCase.Ejecutar(prest.PersonaId).nombre</td>
+                <td>@EncontrarPersonaUseCase.Ejecutar(prest.PersonaId).apellido</td>
                 <td>@prest.LibroId</td>
-                <td>@VerLibroUseCase.Ejecutar(prest.LibroId)</td>
+                <td>@VerLibroUseCase.Ejecutar(prest.LibroId).titulo</td>
                 <td>@prest.fechaDePrestamo</td>
                 <td>@prest.fechaDeDevolucion</td>
                 <td>@prest.estaEnBuenEstado</td>
@@ -60,9 +61,9 @@
                         <span class="oi oi-pencil"></span>
                     </button>
                     
-                    <button class="btn btn-outline-danger btn-sm" @onclick="()=>ConfirmarBorrar(prest)" >
+                    @* <button class="btn btn-outline-danger btn-sm" @onclick="()=>ConfirmarBorrar(prest)" >
                         <span class="oi oi-trash"></span>
-                    </button>
+                    </button> *@
 
                 </td>
             </tr>
@@ -89,6 +90,10 @@
             Console.WriteLine("creando");       
             prestIngresar.OnRellenado = EventCallback.Factory.Create(this, () => Crear(prest));
             prestIngresar.prestamo = prest;
+            
+            prestIngresar.listaLibros = ListarLibrosUseCase.Ejecutar();
+            prestIngresar.listaPersonas = ListarPersonasUseCase.Ejecutar();
+
             prestIngresar.Mostrar();        
     }
 
@@ -99,14 +104,13 @@
 
 
     private void AbrirCuadroDevolver(Prestamo prest){
-        Console.WriteLine("editando");
-        prestIngresar.esCrear = false;        
-        prestIngresar.OnRellenado = EventCallback.Factory.Create(this, () => Editar(prest));
+        Console.WriteLine("editando");      
+        prestIngresar.OnRellenado = EventCallback.Factory.Create(this, () => Devolver(prest));
         prestIngresar.prestamo = prest;
         prestIngresar.Mostrar();
     }
 
-    private void Editar(Prestamo prest){
+    private void Devolver(Prestamo prest){
         DevolverLibroUseCase.Ejecutar(prest);
         _lista = ListarPrestamosUseCase.Ejecutar();
     }
@@ -114,11 +118,11 @@
 
 
 
-    private void ConfirmarBorrar(Prestamo prest)
+    @* private void ConfirmarBorrar(Prestamo prest)
     {
-        idEliminar = prest.Id ?? 0; // si prest.id es nulo, devuelve 0
+        idEliminar = prest.id ?? 0; // si prest.id es nulo, devuelve 0
         dialogo.OnConfirmado = EventCallback.Factory.Create(this, () => Eliminar(idEliminar));
-        dialogo.Mensaje = $"¿Desea eliminar al prestamo {prest.nombre} {prest.apellido} , id: {prest.Id} ?";
+        dialogo.Mensaje = $"¿Desea eliminar al prestamo con id: {prest.id} ?";
         dialogo.Mostrar();  
     }
 
@@ -126,25 +130,28 @@
         
         BajaPrestamoUseCase.Ejecutar(id);
         _lista = ListarPrestamosUseCase.Ejecutar();
-    }
+    } *@
     
-    Persona? buscarPersonaId(int idPersona){
-        Persona? p = null;
+    Persona buscarPersonaId(int idPersona){
+        Persona p;
         
-        p = ListarEstudiantesUseCase.Ejecutar().Where(e => e.Id == idPersona).FirstOrDefault();
-        
-        if(p == null){
-            p = ListarDocentesUseCase.Ejecutar().Where(d => d.Id == idPersona).FirstOrDefault();
-        }
-        
+        p = EncontrarPersonaUseCase.Ejecutar(idPersona);
 
         return p;
     }
 
-    List<Persona> listarPersonas(){
-        List<Persona> lista = new List<Persona>();
+    Libro buscarLibroId(int idLibro){
+        Libro l;
+        
+        l = VerLibroUseCase.Ejecutar(idLibro);
 
-        lista.Add()
+        return l;
+    }
+
+    List<Persona> listarPersonas(){
+        List<Persona> lista;
+
+        lista = ListarPersonasUseCase.Ejecutar();
 
         return lista;
     }

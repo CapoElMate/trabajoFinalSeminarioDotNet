@@ -75,3 +75,5 @@ F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Bib
 F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.UI\obj\Debug\net7.0\scopedcss\Pages\Docente\DocentesIngresar.razor.rz.scp.css
 F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.UI\obj\Debug\net7.0\scopedcss\Pages\Libro\Libros.razor.rz.scp.css
 F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.UI\obj\Debug\net7.0\scopedcss\Pages\Libro\LibrosIngresar.razor.rz.scp.css
+F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.UI\obj\Debug\net7.0\scopedcss\Pages\Prestamo\Prestamos.razor.rz.scp.css
+F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.UI\obj\Debug\net7.0\scopedcss\Pages\Prestamo\PrestamosIngresar.razor.rz.scp.css

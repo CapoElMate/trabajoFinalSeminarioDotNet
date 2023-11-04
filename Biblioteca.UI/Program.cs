@@ -36,6 +36,7 @@ builder.Services.AddTransient<AltaLibroUseCase>();
 builder.Services.AddTransient<BajaLibroUseCase>();
 builder.Services.AddTransient<ModificarLibroUseCase>();
 builder.Services.AddTransient<ListarLibrosUseCase>();
+builder.Services.AddTransient<VerLibroUseCase>();
 builder.Services.AddScoped<IRepositorioLibro, RepositorioLibroSQLite>();
 
 
