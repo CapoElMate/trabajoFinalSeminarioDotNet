@@ -67,6 +67,11 @@ F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Bib
 F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.UI\obj\Debug\net7.0\Biblioteca.UI.pdb
 F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.UI\obj\Debug\net7.0\Biblioteca.UI.genruntimeconfig.cache
 F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.UI\obj\Debug\net7.0\ref\Biblioteca.UI.dll
-F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.UI\obj\Debug\net7.0\scopedcss\Pages\estudiantes.razor.rz.scp.css
 F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.UI\obj\Debug\net7.0\scopedcss\Shared\CuadroDialogo.razor.rz.scp.css
-F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.UI\obj\Debug\net7.0\scopedcss\Pages\EstudiantesIngresar.razor.rz.scp.css
+F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.UI\obj\Debug\net7.0\scopedcss\Shared\MensajeError.razor.rz.scp.css
+F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.UI\obj\Debug\net7.0\scopedcss\Pages\Estudiante\estudiantes.razor.rz.scp.css
+F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.UI\obj\Debug\net7.0\scopedcss\Pages\Estudiante\EstudiantesIngresar.razor.rz.scp.css
+F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.UI\obj\Debug\net7.0\scopedcss\Pages\Docente\Docentes.razor.rz.scp.css
+F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.UI\obj\Debug\net7.0\scopedcss\Pages\Docente\DocentesIngresar.razor.rz.scp.css
+F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.UI\obj\Debug\net7.0\scopedcss\Pages\Libro\Libros.razor.rz.scp.css
+F:\DOCUMENTOS\Proyectos Mate\Facu Informatica\.net\trabajoParcial\Biblioteca\Biblioteca.UI\obj\Debug\net7.0\scopedcss\Pages\Libro\LibrosIngresar.razor.rz.scp.css

@@ -2,7 +2,7 @@ namespace Biblioteca.Aplicacion;
 
 public class Persona
 {
-    public int? Id {get;protected set;}
+    public int? Id {get;set;}
     public int numeroCarnet {get; set;}
     public string nombre {get; set;}
     public string apellido {get; set;}

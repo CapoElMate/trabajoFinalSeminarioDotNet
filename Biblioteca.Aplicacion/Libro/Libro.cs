@@ -4,8 +4,8 @@ namespace Biblioteca.Aplicacion;
 public class Libro{
 
     public int? Id {get; set;}
-    public string? autor {get; protected set;}
-    public string? titulo {get; protected set;}
+    public string? autor {get; set;}
+    public string? titulo {get; set;}
     
     
     //propiedad de navegacion:
@@ -18,12 +18,12 @@ public class Libro{
         get => _añoPublicacion;
 
         // si el año llega a ser mayor que el año actual, guarda -1, sino el valor.
-        protected set => _añoPublicacion =    (value <= DateTime.Now.Year)  
+        set => _añoPublicacion =    (value <= DateTime.Now.Year)  
                                                 ? value 
                                                 :throw new ArgumentException("el año de publi es mayor que el actual");
     }
 
-    public string? genero {get;protected set;}
+    public string? genero {get;set;}
 
     public int numeroEjemplares {get; set;}
     
@@ -33,8 +33,8 @@ public class Libro{
     //constructor vacio. Esto soluciona un error con entity framework
     public Libro(){
         this.Id = null;
-        añoPublicacion = 0;
-        numeroEjemplares = 0;
+        añoPublicacion = int.MinValue;
+        numeroEjemplares = -1;
         autor = "";
         titulo = "";
         genero = "";

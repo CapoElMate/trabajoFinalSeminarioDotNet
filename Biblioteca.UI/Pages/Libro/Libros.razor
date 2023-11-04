@@ -1,0 +1,120 @@
+@page "/libros"
+@using Biblioteca.UI.Data;
+@using Biblioteca.Repositorios;
+
+@inject ListarLibrosUseCase ListarLibrosUseCase;
+@inject BajaLibroUseCase BajaLibroUseCase;
+@inject ModificarLibroUseCase ModificarLibroUseCase;
+@inject AltaLibroUseCase AltaLibroUseCase;
+
+<PageTitle>Libro</PageTitle>
+<h1> Libro </h1>
+
+
+<CuadroDialogo @ref="dialogo" />
+<LibrosIngresar @ref="libIngresar" />
+
+<button class="btn btn-success" @onclick="()=>AbrirCuadroCrear(new Libro())">
+        
+    <span>Dar de Alta un Libro</span>
+
+</button>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>TITULO</th>
+            <th>AUTOR</th>
+            <th>AÑO PUBLICACION</th>
+            <th>GENERO</th>
+            <th>CANTIDAD DE EJEMPLARES</th>
+            <th>OPCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var lib in _lista)
+        {
+            <tr>
+                <td>@lib.Id</td>
+                <td>@lib.titulo</td>
+                <td>@lib.autor</td>
+                <td>@lib.añoPublicacion</td>
+                <td>@lib.genero</td>
+                <td>@lib.numeroEjemplares</td>
+                <td>
+                    <button class="btn btn-outline-success btn-sm" @onclick="()=>AbrirCuadroEditar(lib)">
+                        <span class="oi oi-pencil"></span>
+                    </button>
+                    
+                    <button class="btn btn-outline-danger btn-sm" @onclick="()=>ConfirmarBorrar(lib)" >
+                        <span class="oi oi-trash"></span>
+                    </button>
+
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+@code{
+    List<Libro> _lista = new List<Libro>();
+    
+    protected override void OnInitialized()
+    {
+        _lista = ListarLibrosUseCase.Ejecutar();
+    }
+
+    CuadroDialogo dialogo = null!; 
+    private int idEliminar = 0;
+    
+    LibrosIngresar libIngresar = null!;
+
+    private void AbrirCuadroCrear(Libro lib){
+        Console.WriteLine("creando");
+        libIngresar.esCrear = true;        
+        libIngresar.OnRellenado = EventCallback.Factory.Create(this, () => Crear(lib));
+        libIngresar.libro = lib;
+        libIngresar.Mostrar();
+    }
+
+    private void Crear(Libro lib){
+        AltaLibroUseCase.Ejecutar(lib);
+        _lista = ListarLibrosUseCase.Ejecutar();
+    }
+
+
+    private void AbrirCuadroEditar(Libro lib){
+        Console.WriteLine("editando");
+        libIngresar.esCrear = false;        
+        libIngresar.OnRellenado = EventCallback.Factory.Create(this, () => Editar(lib));
+        libIngresar.libro = lib;
+        libIngresar.Mostrar();
+    }
+
+    private void Editar(Libro lib){
+        ModificarLibroUseCase.Ejecutar(lib);
+        _lista = ListarLibrosUseCase.Ejecutar();
+    }
+
+
+
+
+    private void ConfirmarBorrar(Libro lib)
+    {
+        idEliminar = lib.Id ?? 0; // si lib.id es nulo, devuelve 0
+        dialogo.OnConfirmado = EventCallback.Factory.Create(this, () => Eliminar(idEliminar));
+        dialogo.Mensaje = $"¿Desea eliminar el libro {lib.titulo} , id: {lib.Id} ?"; 
+        dialogo.Mostrar();  
+    }
+
+    private void Eliminar(int id){
+        
+        BajaLibroUseCase.Ejecutar(id);
+        _lista = ListarLibrosUseCase.Ejecutar();
+    }
+    
+
+}

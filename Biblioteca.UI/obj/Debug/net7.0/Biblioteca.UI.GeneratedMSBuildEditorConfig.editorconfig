@@ -20,10 +20,6 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
 [F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -36,13 +32,37 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Pages/Estudiantes.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0dWRpYW50ZXMucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-jvka48mo60
+[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Pages/Docente/Docentes.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRG9jZW50ZVxEb2NlbnRlcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-nl689zmao4
 
-[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Pages/EstudiantesIngresar.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0dWRpYW50ZXNJbmdyZXNhci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-2v8ayuqj1y
+[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Pages/Docente/DocentesIngresar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRG9jZW50ZVxEb2NlbnRlc0luZ3Jlc2FyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-ik9yaebckj
+
+[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Pages/Estudiante/Estudiantes.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0dWRpYW50ZVxFc3R1ZGlhbnRlcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-2fphv916pq
+
+[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Pages/Estudiante/EstudiantesIngresar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0dWRpYW50ZVxFc3R1ZGlhbnRlc0luZ3Jlc2FyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-fbfh936meh
+
+[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Pages/Libro/Libros.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlicm9cTGlicm9zLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-sfxifs3tzw
+
+[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Pages/Libro/LibrosIngresar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlicm9cTGlicm9zSW5ncmVzYXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-l6zp7kmu65
+
+[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Pages/Prestamo/Prestamos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJlc3RhbW9cUHJlc3RhbW9zLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-08rko4jbqp
+
+[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Pages/Prestamo/PrestamosIngresar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJlc3RhbW9cUHJlc3RhbW9zSW5ncmVzYXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-eovzzj7egs
 
 [F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Shared/CuadroDialogo.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEN1YWRyb0RpYWxvZ28ucmF6b3I=
@@ -51,6 +71,10 @@ build_metadata.AdditionalFiles.CssScope = b-zk5s6xl7s1
 [F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-z170pvz7ey
+
+[F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Shared/MensajeError.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1lbnNhamVFcnJvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-ewnaf8kvz1
 
 [F:/DOCUMENTOS/Proyectos Mate/Facu Informatica/.net/trabajoParcial/Biblioteca/Biblioteca.UI/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=

@@ -1,0 +1,22 @@
+@if(visible){
+     <p class="error">@mensaje</p>
+}
+
+
+@code{
+
+    private bool visible;
+
+    [Parameter]
+    public string mensaje {get;set;} = "";
+    
+    public void Mostrar()
+    {
+        visible=true;
+        StateHasChanged();
+    }
+    void Cerrar()
+    {
+        visible=false;  
+    }
+}

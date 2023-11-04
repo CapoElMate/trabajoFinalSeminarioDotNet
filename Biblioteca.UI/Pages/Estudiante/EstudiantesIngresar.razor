@@ -1,0 +1,122 @@
+
+@if(visible){
+    <div class="dialogo-contenedor"> 
+        <div class="dialogo-contenido"> 
+            <h3>@( (esCrear) ? "Dar de Alta" : "Modificar") un estudiante</h3> <!-- cambia el titulo segun si el metodo es crear -->
+
+                <label>nombre:</label>
+                <input placeholder="nombre" @bind=estudiante.nombre>             
+            <br>
+
+                <label>apellido:</label>
+                <input placeholder="apellido" @bind=estudiante.apellido>
+            
+            <br>
+                <label>numero de carnet:</label>
+                <input placeholder="nro. carnet" @bind=numeroCarnet>
+            
+            <br>
+                <label>facultad:</label>
+                <input placeholder="facultad" @bind=estudiante.facultad>
+            <br>
+                <label>carrera:</label>
+                <input placeholder="carrera" @bind=estudiante.carrera>
+            <br>
+                <label>numero alumno:</label>
+                <input placeholder="nro alumno" @bind=numeroAlumno>
+            <br>
+                <label>telefono:</label>
+                <input placeholder="000-000-0000" @bind=estudiante.telefono>
+            <br>
+                <label>correo electronico:</label>
+                <input placeholder="alumno@mail.com" @bind=estudiante.correoElectronico>
+
+            <br>
+            <br>
+            <br>
+            <button class="btn btn-primary" @onclick="CerrarYGuardar">Finalizar Edicion</button>
+            <button class="btn btn-secondary" @onclick="Cerrar">Cancelar</button>
+        
+            <MensajeError @ref="msjError"/>
+        
+        </div>
+    </div>
+}
+
+
+@code{
+
+    
+    public bool visible{get; set;}
+    
+    [Parameter]
+    public bool esCrear{get;set;} //esta variable va a definir si creo un estudiante o ingreso uno.
+
+    [Parameter]
+    public Estudiante estudiante{get;set;} = new Estudiante(); // inicio estudiante como un estudiante vacio. para que no salga la advertencia de null Preguntar si esta bn
+
+    [Parameter]
+    public EventCallback OnRellenado{get;set;}
+
+    private String accion = "";
+
+    MensajeError msjError = null!;
+
+    //Estas variables las hago para que los numeros que ingreso no se vean con su valor por defecto (-1), 
+    //, los numeros no pueden tener un valor no visible sin ser null,
+    //, y no queria dar la posibilidad de que mi clase Estudiante tenga campos con posibilidad de ser null
+
+    private int? numeroCarnet,numeroAlumno;
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        
+        Console.WriteLine(estudiante.numeroCarnet);
+        
+        accion = (esCrear) ? "Crear" : "Modificar";
+        
+    }
+
+    public void Mostrar()
+    {
+        //inicio numero de carnet en nulo si el obj. estudiante tiene el nro de alumno en -1 (valor por defecto), de lo contrario, inicia con su valor
+        numeroCarnet = (estudiante.numeroCarnet == -1) ? null : estudiante.numeroCarnet;
+        numeroAlumno = (estudiante.numeroAlumno == -1) ? null : estudiante.numeroAlumno;
+        
+        visible=true;
+
+        StateHasChanged();
+    }
+    void Cerrar()
+    {
+        visible=false;  
+    }
+    void CerrarYGuardar(){        
+        
+
+        if(algunCampoVacio(estudiante)){
+            msjError.Mostrar();
+            msjError.mensaje = "hay campos vacios. por favor rellenalos.";
+        }
+        else{
+            visible = false;
+
+            estudiante.numeroCarnet = numeroCarnet??-1;
+            estudiante.numeroAlumno = numeroAlumno??-1;
+
+            OnRellenado.InvokeAsync();
+        }
+
+    }
+
+    private bool algunCampoVacio(Estudiante est){
+       
+        return (est.nombre == "")   || (est.apellido == "")     || (numeroCarnet == null) ||
+        (est.facultad == "")        || (est.carrera == "")      || (numeroAlumno == null) ||
+        (est.telefono == "" )       || (est.correoElectronico == "");
+
+    }
+
+
+}

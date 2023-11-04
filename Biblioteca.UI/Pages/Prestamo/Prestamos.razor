@@ -1,0 +1,152 @@
+@page "/prestamos"
+@using Biblioteca.UI.Data;
+@using Biblioteca.Repositorios;
+
+@inject ListarPrestamosUseCase ListarPrestamosUseCase;
+@inject ListarLibrosUseCase ListarLibrosUseCase;
+
+@inject VerLibroUseCase VerLibroUseCase;
+
+@inject ListarPersonasUseCase ListarPersonasUseCase;
+@inject EncontrarPersonaUseCase EncontrarPersonaUseCase;
+
+@inject ListarPrestamosUseCase ListarPrestamosUseCase;
+@inject RealizarPrestamoUseCase RealizarPrestamoUseCase;
+@inject DevolverLibroUseCase DevolverLibroUseCase;
+
+<PageTitle>Prestamos</PageTitle>
+<h1> Prestamos </h1>
+
+
+<CuadroDialogo @ref="dialogo" />
+<PrestamosIngresar @ref="prestIngresar" />
+
+<button class="btn btn-success" @onclick="()=>AbrirCuadroCrear(new Prestamo())">
+        
+    <span>Dar de Alta un Prestamo</span>
+
+</button>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>ID PERSONA</th>
+            <th>NOMBRE PERSONA</th>
+            <th>APELLIDO PERSONA</th>
+            <th>ID LIBRO</th>
+            <th>TITULO LIBRO</th>
+            <th>FECHA PRESTAMO</th>
+            <th>FECHA DE DEVOLUCION</th>
+            <th>SE DEVOLVIO EN BUEN ESTADO</th>
+            <th>OPCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var prest in _lista)
+        {
+            <tr>
+                <td>@prest.id</td>
+                <td>@prest.PersonaId</td>                
+                <td>@EncontrarPersonaUseCase.Ejecutar(prest.PersonaId)</td>
+                <td>@prest.LibroId</td>
+                <td>@VerLibroUseCase.Ejecutar(prest.LibroId)</td>
+                <td>@prest.fechaDePrestamo</td>
+                <td>@prest.fechaDeDevolucion</td>
+                <td>@prest.estaEnBuenEstado</td>
+                <td>
+                    <button class="btn btn-outline-success btn-sm" @onclick="()=>AbrirCuadroDevolver(prest)">
+                        <span class="oi oi-pencil"></span>
+                    </button>
+                    
+                    <button class="btn btn-outline-danger btn-sm" @onclick="()=>ConfirmarBorrar(prest)" >
+                        <span class="oi oi-trash"></span>
+                    </button>
+
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+@code{
+    List<Prestamo> _lista = new List<Prestamo>();
+    
+    protected override void OnInitialized()
+    {
+        _lista = ListarPrestamosUseCase.Ejecutar();
+    }
+
+    CuadroDialogo dialogo = null!; 
+    private int idEliminar = 0;
+    
+    PrestamosIngresar prestIngresar = null!;
+
+    private void AbrirCuadroCrear(Prestamo prest){
+        
+            Console.WriteLine("creando");       
+            prestIngresar.OnRellenado = EventCallback.Factory.Create(this, () => Crear(prest));
+            prestIngresar.prestamo = prest;
+            prestIngresar.Mostrar();        
+    }
+
+    private void Crear(Prestamo prest){
+        RealizarPrestamoUseCase.Ejecutar(prest);
+        _lista = ListarPrestamosUseCase.Ejecutar();
+    }
+
+
+    private void AbrirCuadroDevolver(Prestamo prest){
+        Console.WriteLine("editando");
+        prestIngresar.esCrear = false;        
+        prestIngresar.OnRellenado = EventCallback.Factory.Create(this, () => Editar(prest));
+        prestIngresar.prestamo = prest;
+        prestIngresar.Mostrar();
+    }
+
+    private void Editar(Prestamo prest){
+        DevolverLibroUseCase.Ejecutar(prest);
+        _lista = ListarPrestamosUseCase.Ejecutar();
+    }
+
+
+
+
+    private void ConfirmarBorrar(Prestamo prest)
+    {
+        idEliminar = prest.Id ?? 0; // si prest.id es nulo, devuelve 0
+        dialogo.OnConfirmado = EventCallback.Factory.Create(this, () => Eliminar(idEliminar));
+        dialogo.Mensaje = $"¿Desea eliminar al prestamo {prest.nombre} {prest.apellido} , id: {prest.Id} ?";
+        dialogo.Mostrar();  
+    }
+
+    private void Eliminar(int id){
+        
+        BajaPrestamoUseCase.Ejecutar(id);
+        _lista = ListarPrestamosUseCase.Ejecutar();
+    }
+    
+    Persona? buscarPersonaId(int idPersona){
+        Persona? p = null;
+        
+        p = ListarEstudiantesUseCase.Ejecutar().Where(e => e.Id == idPersona).FirstOrDefault();
+        
+        if(p == null){
+            p = ListarDocentesUseCase.Ejecutar().Where(d => d.Id == idPersona).FirstOrDefault();
+        }
+        
+
+        return p;
+    }
+
+    List<Persona> listarPersonas(){
+        List<Persona> lista = new List<Persona>();
+
+        lista.Add()
+
+        return lista;
+    }
+
+}

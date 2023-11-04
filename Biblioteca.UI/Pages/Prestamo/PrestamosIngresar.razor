@@ -1,0 +1,99 @@
+
+@if(visible){
+    <div class="dialogo-contenedor"> 
+        <div class="dialogo-contenido"> 
+            <h3>Crear un prestamo</h3> <!-- cambia el titulo segun si el metodo es crear -->
+
+                <label>nombre:</label>
+            <input placeholder="nombre" @bind=prestamo.nombre>             
+            
+
+            <br>
+            <br>
+            <br>
+            <button class="btn btn-primary" @onclick="CerrarYGuardar">Finalizar Edicion</button>
+            <button class="btn btn-secondary" @onclick="Cerrar">Cancelar</button>
+        
+            <MensajeError @ref="msjError"/>
+        
+        </div>
+    </div>
+}
+
+
+@code{
+
+    
+    public bool visible{get; set;}
+
+
+    [Parameter]
+    public Prestamo prestamo{get;set;} = new Prestamo(); // inicio prestamo como un prestamo vacio. para que no salga la advertencia de null Preguntar si doca bn
+
+    [Parameter]
+    public EventCallback OnRellenado{get;set;}
+
+    [Parameter]
+    public List<Persona> listaPersonas{get;set;}
+    [Parameter]
+    public List<Libros> listaLibros{get;set;}
+
+
+    private String accion = "";
+
+    MensajeError msjError = null!;
+
+    private int? añoInicioDocencia,numeroMatricula,numeroCarnet;
+
+
+    protected override void OnParametersSet()
+    {   
+        base.OnParametersSet();
+    }
+
+    public void Mostrar()
+    {
+        visible=true;
+
+        StateHasChanged();
+    }
+    void Cerrar()
+    {
+        visible=false;  
+    }
+    void CerrarYGuardar(){        
+        
+
+        if(algunCampoVacio(prestamo)){
+            msjError.Mostrar();
+            msjError.mensaje = "hay campos vacios. por favor rellenalos.";
+        }
+        else{
+            prestamo.numeroCarnet = numeroCarnet ?? -1;
+            prestamo.numeroMatricula = numeroMatricula ?? -1;
+            
+            //si año de docencia es nulo, o si su valor no esta dentro de su rango correcto, toma su valor por defecto (1901)
+            try{
+                prestamo.añoInicioDocencia = añoInicioDocencia ?? 1901;           
+            }
+            catch(ArgumentException){
+                msjError.mensaje = "Error, el año de docencia no esta en el rango correcto";
+                return; // sale de CerrarYGuardar
+            }            
+            
+            visible = false;
+            OnRellenado.InvokeAsync();
+        }
+
+    }
+
+    private bool algunCampoVacio(Prestamo prest){
+       
+        return (prest.nombre == "")   || (prest.apellido == "")     || (prest.numeroCarnet == -1) ||
+        (prest.facultad == "")        || (prest.añoInicioPrestencia == 1901)      || (prest.numeroMatricula == -1) ||
+        (prest.telefono == "" )       || (prest.correoElectronico == "");
+
+    }
+
+
+}

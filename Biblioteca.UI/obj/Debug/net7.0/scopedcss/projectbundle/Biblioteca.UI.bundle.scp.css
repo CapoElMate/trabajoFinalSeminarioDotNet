@@ -1,10 +1,10 @@
-/* _content/Biblioteca.UI/Pages/estudiantes.razor.rz.scp.css */
-#table[b-jvka48mo60]{
+/* _content/Biblioteca.UI/Pages/Docente/Docentes.razor.rz.scp.css */
+#table[b-nl689zmao4],th[b-nl689zmao4]{
     text-shadow: black;
     text-shadow: lch(from color l c h);
 }
-/* _content/Biblioteca.UI/Pages/EstudiantesIngresar.razor.rz.scp.css */
-.dialogo-contenedor[b-2v8ayuqj1y] {
+/* _content/Biblioteca.UI/Pages/Docente/DocentesIngresar.razor.rz.scp.css */
+.dialogo-contenedor[b-ik9yaebckj] {
     position: fixed;
     top:0;
     left: 0;
@@ -16,8 +16,76 @@
     align-items: center;
     justify-content: center;
     }
+
+.parrafo[b-ik9yaebckj]{
+    font-size: x-small;
+    align-self: baseline;
+}
+
+
+    .dialogo-contenido[b-ik9yaebckj]{
+    width: 50%;
+    padding: 20px;
+    background-color: white;
+    }
+/* _content/Biblioteca.UI/Pages/Estudiante/Estudiantes.razor.rz.scp.css */
+#table[b-2fphv916pq],th[b-2fphv916pq]{
+    text-shadow: black;
+    text-shadow: lch(from color l c h);
+}
+/* _content/Biblioteca.UI/Pages/Estudiante/EstudiantesIngresar.razor.rz.scp.css */
+.dialogo-contenedor[b-fbfh936meh] {
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom:0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+
+.parrafo[b-fbfh936meh]{
+    font-size: x-small;
+    vertical-align: bottom;
+}
+
+br[b-fbfh936meh]{margin-bottom: 10cm;}
+
+.dialogo-contenido[b-fbfh936meh]{
+    width: 50%;
+    padding: 20px;
+    background-color: white;
     
-    .dialogo-contenido[b-2v8ayuqj1y]{
+}
+/* _content/Biblioteca.UI/Pages/Libro/Libros.razor.rz.scp.css */
+#table[b-sfxifs3tzw],th[b-sfxifs3tzw]{
+    text-shadow: black;
+    text-shadow: lch(from color l c h);
+}
+/* _content/Biblioteca.UI/Pages/Libro/LibrosIngresar.razor.rz.scp.css */
+.dialogo-contenedor[b-l6zp7kmu65] {
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom:0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+
+.parrafo[b-l6zp7kmu65]{
+    font-size: x-small;
+    align-self: baseline;
+}
+
+
+    .dialogo-contenido[b-l6zp7kmu65]{
     width: 50%;
     padding: 20px;
     background-color: white;
@@ -111,6 +179,12 @@ main[b-z170pvz7ey] {
         padding-left: 2rem !important;
         padding-right: 1.5rem !important;
     }
+}
+/* _content/Biblioteca.UI/Shared/MensajeError.razor.rz.scp.css */
+
+.error[b-ewnaf8kvz1]{
+    font-size: small;
+    color: crimson;
 }
 /* _content/Biblioteca.UI/Shared/NavMenu.razor.rz.scp.css */
 .navbar-toggler[b-b80zd4icv5] {

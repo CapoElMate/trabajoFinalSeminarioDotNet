@@ -1,4 +1,4 @@
-.dialogo-contenedor {
+.dialogo-contenedor[b-l6zp7kmu65] {
     position: fixed;
     top:0;
     left: 0;
@@ -10,8 +10,14 @@
     align-items: center;
     justify-content: center;
     }
-    
-    .dialogo-contenido{
+
+.parrafo[b-l6zp7kmu65]{
+    font-size: x-small;
+    align-self: baseline;
+}
+
+
+    .dialogo-contenido[b-l6zp7kmu65]{
     width: 50%;
     padding: 20px;
     background-color: white;
