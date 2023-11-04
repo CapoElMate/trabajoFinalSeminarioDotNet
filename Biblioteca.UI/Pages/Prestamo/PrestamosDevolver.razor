@@ -1,0 +1,61 @@
+@if(visible){
+    <div class="dialogo-contenedor"> 
+        <div class="dialogo-contenido"> 
+            <h3>Devolver un libro prestado</h3>
+            
+            <label>¿El libro fue devuelto en buen estado?   </label>            
+            <input type="checkbox" @bind="@buenEstado" />
+            
+            <br>
+            <label>Fecha de devolucion del libro:</label>
+            <InputDate @bind-Value="fechaDev"/>
+
+            <br>
+            <br>
+            <br>
+            <button class="btn btn-primary" @onclick="CerrarYGuardar">Finalizar Devolucion</button>
+            <button class="btn btn-secondary" @onclick="Cerrar">Cancelar</button>
+
+        </div>
+    </div>
+}
+
+
+@code{
+    public bool visible{set;get;}
+    private bool disabled = false;
+
+    private bool buenEstado { get; set; }
+    public DateTime fechaDev{get;set;}= DateTime.Now;
+
+
+    [Parameter]
+    public Prestamo prestamo{get;set;} = new Prestamo(); // inicio prestamo como un prestamo vacio. para que no salga la advertencia de null Preguntar si doca bn
+
+    [Parameter]
+    public EventCallback OnRellenado{get;set;}
+
+    public string val = "";
+    
+    public void Mostrar()
+    {
+        //inicio los valores:
+        buenEstado = false;
+        fechaDev = DateTime.Now;
+
+        visible=true;
+        StateHasChanged();
+    }
+    void Cerrar()
+    {
+        visible=false;  
+    }
+    void CerrarYGuardar(){        
+
+        visible = false;
+        prestamo.devolver(fechaDev,buenEstado);
+        OnRellenado.InvokeAsync();         
+
+    }
+
+}

@@ -16,8 +16,8 @@ public DateTime fechaDePrestamo {get;set;}
 
 public bool estaDevuelto{get; protected set;}
 //para cuando lo devuevo:
-public DateTime fechaDeDevolucion {get; protected set;}
-public bool estaEnBuenEstado{get; protected set;}
+public DateTime fechaDeDevolucion {get; set;}
+public bool estaEnBuenEstado{get; set;}
 
 
 

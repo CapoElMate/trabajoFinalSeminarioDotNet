@@ -18,8 +18,9 @@
 <h1> Prestamos </h1>
 
 
-<CuadroDialogo @ref="dialogo" />
+@* <CuadroDialogo @ref="dialogo" /> *@
 <PrestamosIngresar @ref="prestIngresar" />
+<PrestamosDevolver @ref="prestDevolver"/>
 
 <button class="btn btn-success" @onclick="()=>AbrirCuadroCrear(new Prestamo())">
         
@@ -53,19 +54,33 @@
                 <td>@EncontrarPersonaUseCase.Ejecutar(prest.PersonaId).apellido</td>
                 <td>@prest.LibroId</td>
                 <td>@VerLibroUseCase.Ejecutar(prest.LibroId).titulo</td>
-                <td>@prest.fechaDePrestamo</td>
-                <td>@prest.fechaDeDevolucion</td>
-                <td>@prest.estaEnBuenEstado</td>
-                <td>
-                    <button class="btn btn-outline-success btn-sm" @onclick="()=>AbrirCuadroDevolver(prest)">
-                        <span class="oi oi-pencil"></span>
-                    </button>
-                    
-                    @* <button class="btn btn-outline-danger btn-sm" @onclick="()=>ConfirmarBorrar(prest)" >
-                        <span class="oi oi-trash"></span>
-                    </button> *@
+                <td>@prest.fechaDePrestamo.Day / @prest.fechaDePrestamo.Month / @prest.fechaDePrestamo.Year</td>
+                
+                @if(prest.estaDevuelto)
+                {
+                    <td>@prest.fechaDeDevolucion</td>
+                    <td>@prest.estaEnBuenEstado</td>                    
 
-                </td>
+                    <td/>
+
+                }else{
+                    <td> - </td>
+                    <td> - </td>
+                    
+                    <td>
+                        <button class="btn btn-outline-success btn-sm" @onclick="()=>AbrirCuadroDevolver(prest)">
+                            <span class="oi oi-pencil"></span>
+                        </button>
+                        
+                        @* <button class="btn btn-outline-danger btn-sm" @onclick="()=>ConfirmarBorrar(prest)" >
+                            <span class="oi oi-trash"></span>
+                        </button> *@
+
+                    </td>
+
+                }
+                
+                
             </tr>
         }
 
@@ -80,11 +95,11 @@
         _lista = ListarPrestamosUseCase.Ejecutar();
     }
 
-    CuadroDialogo dialogo = null!; 
-    private int idEliminar = 0;
+    CuadroDialogo dialogo = null!;
     
     PrestamosIngresar prestIngresar = null!;
-
+    PrestamosDevolver prestDevolver = null!;
+    
     private void AbrirCuadroCrear(Prestamo prest){
         
             Console.WriteLine("creando");       
@@ -93,6 +108,7 @@
             
             prestIngresar.listaLibros = ListarLibrosUseCase.Ejecutar();
             prestIngresar.listaPersonas = ListarPersonasUseCase.Ejecutar();
+            
 
             prestIngresar.Mostrar();        
     }
@@ -104,10 +120,10 @@
 
 
     private void AbrirCuadroDevolver(Prestamo prest){
-        Console.WriteLine("editando");      
-        prestIngresar.OnRellenado = EventCallback.Factory.Create(this, () => Devolver(prest));
-        prestIngresar.prestamo = prest;
-        prestIngresar.Mostrar();
+        Console.WriteLine("devolviendo");      
+        prestDevolver.OnRellenado = EventCallback.Factory.Create(this, () => Devolver(prest));
+        prestDevolver.prestamo = prest; //devuelvo el prestamo
+        prestDevolver.Mostrar();
     }
 
     private void Devolver(Prestamo prest){

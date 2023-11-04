@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
+using System.IO.Compression;
 using Biblioteca.Aplicacion;
+using Microsoft.EntityFrameworkCore;
 namespace Biblioteca.Repositorios;
 
 public class RepositorioLibroSQLite: IRepositorioLibro
@@ -82,7 +84,7 @@ public class RepositorioLibroSQLite: IRepositorioLibro
 
         using(var db = new BibliotecaContext()){
 
-            libros = db.libros.ToList();
+            libros = db.libros.Include(l => l.Prestamos).ToList();
 
         }
 

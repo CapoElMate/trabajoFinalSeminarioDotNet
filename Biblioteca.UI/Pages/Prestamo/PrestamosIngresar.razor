@@ -2,7 +2,7 @@
 @if(visible){
     <div class="dialogo-contenedor"> 
         <div class="dialogo-contenido"> 
-            <h3>Crear un prestamo</h3> <!-- cambia el titulo segun si el metodo es crear -->
+            <h3>Crear un prestamo</h3>
 
                 <label>persona:</label>
 
@@ -22,7 +22,11 @@
                     <InputSelect id="FirstString" @bind-Value="libroSeleccionado">
                         <option value="0">seleccionar libro</option>
                         @foreach(Libro l in listaLibros){
-                            <option value="@l.Id">@l.titulo</option> 
+                            @* la siguiente linea busca los libros que tengan esa id y dice si esta disponible. *@
+                            cantLibros = l.numeroEjemplares -l.Prestamos.Count();
+                            
+                            if(cantLibros < 1){ <option value="0" disabled="true">@l.titulo - disponibles: @cantLibros  </option> }
+                            else{               <option value="@l.Id">@l.titulo - disponibles: @cantLibros              </option> }
                         }
                     </InputSelect>
                 
@@ -63,6 +67,7 @@
     [Parameter]
     public List<Libro> listaLibros{get;set;} = new List<Libro>();
 
+    public int cantLibros{get;set;}
 
     private String accion = "";
 
