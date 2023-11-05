@@ -28,6 +28,7 @@
 
 </button>
 
+
 <table class="table">
     <thead>
         <tr>
@@ -58,8 +59,17 @@
                 
                 @if(prest.estaDevuelto)
                 {
-                    <td>@prest.fechaDeDevolucion</td>
-                    <td>@prest.estaEnBuenEstado</td>                    
+                    <td>@prest.fechaDeDevolucion.Day / @prest.fechaDeDevolucion.Month / @prest.fechaDeDevolucion.Year</td>
+                    
+                    <td>
+                        
+                    @if(prest.estaEnBuenEstado){
+                        <i class="bi-check-square"  style="font-size: 1.3rem; color: green;"></i>
+                    }
+                    else{
+                        <i class="bi-x-square"  style="font-size: 1.3rem; color: red;"></i>
+                    }
+                    </td>
 
                     <td/>
 
@@ -69,7 +79,7 @@
                     
                     <td>
                         <button class="btn btn-outline-success btn-sm" @onclick="()=>AbrirCuadroDevolver(prest)">
-                            <span class="oi oi-pencil"></span>
+                            <span class="bi bi-journal-check"  style="font-size: 1.3rem; "></span>
                         </button>
                         
                         @* <button class="btn btn-outline-danger btn-sm" @onclick="()=>ConfirmarBorrar(prest)" >
@@ -102,7 +112,7 @@
     
     private void AbrirCuadroCrear(Prestamo prest){
         
-            Console.WriteLine("creando");       
+            //Console.WriteLine("creando");       
             prestIngresar.OnRellenado = EventCallback.Factory.Create(this, () => Crear(prest));
             prestIngresar.prestamo = prest;
             
@@ -120,7 +130,7 @@
 
 
     private void AbrirCuadroDevolver(Prestamo prest){
-        Console.WriteLine("devolviendo");      
+        //Console.WriteLine("devolviendo");      
         prestDevolver.OnRellenado = EventCallback.Factory.Create(this, () => Devolver(prest));
         prestDevolver.prestamo = prest; //devuelvo el prestamo
         prestDevolver.Mostrar();

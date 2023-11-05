@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\Biblioteca.UI.bundle.scp.css"
     },
     {
+      "Id": "F:\\DOCUMENTOS\\Proyectos Mate\\Facu Informatica\\.net\\trabajoParcial\\Biblioteca\\Biblioteca.UI\\wwwroot\\css\\Icons\\book.svg",
+      "PackagePath": "staticwebassets\\css\\Icons\\book.svg"
+    },
+    {
+      "Id": "F:\\DOCUMENTOS\\Proyectos Mate\\Facu Informatica\\.net\\trabajoParcial\\Biblioteca\\Biblioteca.UI\\wwwroot\\css\\Icons\\check-circle-fill.svg",
+      "PackagePath": "staticwebassets\\css\\Icons\\check-circle-fill.svg"
+    },
+    {
       "Id": "F:\\DOCUMENTOS\\Proyectos Mate\\Facu Informatica\\.net\\trabajoParcial\\Biblioteca\\Biblioteca.UI\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
     },

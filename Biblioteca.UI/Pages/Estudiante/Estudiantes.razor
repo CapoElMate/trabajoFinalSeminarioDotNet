@@ -79,7 +79,7 @@
     EstudiantesIngresar estIngresar = null!;
 
     private void AbrirCuadroCrear(Estudiante est){
-        Console.WriteLine("creando");
+        //Console.WriteLine("creando");
         estIngresar.esCrear = true;        
         estIngresar.OnRellenado = EventCallback.Factory.Create(this, () => Crear(est));
         estIngresar.estudiante = est;
@@ -93,7 +93,7 @@
 
 
     private void AbrirCuadroEditar(Estudiante est){
-        Console.WriteLine("editando");
+        //Console.WriteLine("editando");
         estIngresar.esCrear = false;        
         estIngresar.OnRellenado = EventCallback.Factory.Create(this, () => Editar(est));
         estIngresar.estudiante = est;

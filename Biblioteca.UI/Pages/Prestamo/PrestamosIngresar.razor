@@ -23,10 +23,11 @@
                         <option value="0">seleccionar libro</option>
                         @foreach(Libro l in listaLibros){
                             @* la siguiente linea busca los libros que tengan esa id y dice si esta disponible. *@
-                            cantLibros = l.numeroEjemplares -l.Prestamos.Count();
-                            
-                            if(cantLibros < 1){ <option value="0" disabled="true">@l.titulo - disponibles: @cantLibros  </option> }
-                            else{               <option value="@l.Id">@l.titulo - disponibles: @cantLibros              </option> }
+                            cantLibros = l.numeroEjemplares - (l.Prestamos == null ? 0 : l.Prestamos.Count()); @*esta parte es para que no salga el error de qeu la lista puede ser nula *@
+
+                            if(cantLibros < 1)  {   <option value="0" disabled="true"> @l.titulo - disponibles: @cantLibros </option> }
+                            else                {               <option value="@l.Id"> @l.titulo - disponibles: @cantLibros </option> }
+
                         }
                     </InputSelect>
                 
@@ -109,8 +110,8 @@
 
     private bool algunCampoVacio(Prestamo prest){
        
-        Console.WriteLine(personaSeleccionada);
-        Console.WriteLine(libroSeleccionado);
+        //Console.WriteLine(personaSeleccionada);
+        //Console.WriteLine(libroSeleccionado);
 
        //NOTA: no verifico fecha todavia
         return (personaSeleccionada == 0)   || (libroSeleccionado == 0)   ;

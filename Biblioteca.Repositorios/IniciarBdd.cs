@@ -24,20 +24,25 @@ public class IniciarBdd{
         // //inicializo los casos de uso e inyecto las dependencias de prestamos:
         var realizarPrestamo = new RealizarPrestamoUseCase(repositorioPrestamo, repositorioLibro);
         var devolverLibro = new DevolverLibroUseCase(repositorioPrestamo);
-        var listarPrestamosActivos = new ListarPrestamosActivosUseCase(repositorioPrestamo);
         var listarPrestamos = new ListarPrestamosUseCase(repositorioPrestamo);
 
         // //inicializo los casos de uso e inyecto las dependencias de estudiantes:
         var altaEstudiante = new AltaEstudianteUseCase(repositorioEstudiante);
         var bajaEstudiante = new BajaEstudianteUseCase(repositorioEstudiante);
-        var listarEstudiantes = new ListarEstudiantesUseCase(repositorioEstudiante);
-        var modificarEstudiante = new ModificarEstudianteUseCase(repositorioEstudiante);
+        var listarEstudiantes = new ListarEstudiantesUseCase(repositorioEstudiante);        
 
         //inicializo los casos de uso e inyecto las dependencias de profesores:
         var altaDocente = new AltaDocenteUseCase(repositorioDocente);
         var bajaDocente = new BajaDocenteUseCase(repositorioDocente);
         var listarDocentes = new ListarDocentesUseCase(repositorioDocente);
         var modificarDocente = new ModificarDocenteUseCase(repositorioDocente);
+
+        //inicializo los casos de uso e inyecto las dependencias de libros:
+        var altaLibro = new AltaLibroUseCase(repositorioLibro);
+        var verLibro = new VerLibroUseCase(repositorioLibro);
+        var bajaLibro = new BajaLibroUseCase(repositorioLibro);
+        var listarLibros = new ListarLibrosUseCase(repositorioLibro);
+        var modificarLibro = new ModificarLibroUseCase(repositorioLibro);
 
 
         //si la bdd esta con algun dato, no ejecuto el resto.
@@ -50,7 +55,7 @@ public class IniciarBdd{
         if (listarPrestamos.Ejecutar().Count > 0)
             return;
 
-        if (listarEstudiantes.Ejecutar().Count > 0)
+        if (listarLibros.Ejecutar().Count > 0)
             return;
 
 
@@ -92,34 +97,8 @@ public class IniciarBdd{
                                                         "Academia Universitaria de Baile" , "0800-01101001" , "michael.jack@oficial.com" 
                                                     , 123 , 2000) );
 
-        // modificarEstudiante.Ejecutar(new Estudiante(0, 23456, "Tony", "Stark", "Torre Stark Ciudad de los Vengadores", 
-        //                                                       "Facultad de Ingeniería Avanzada", "555-789-0123", "tony.stark@example.com", 
-        //                                                       272, "ingenieria mecatronica" ) );
 
-
-        Console.WriteLine("\n\nlistando docentes: \n");
-        foreach (Docente doc in listarDocentes.Ejecutar())
-            Console.WriteLine(doc);
-
-        Console.WriteLine("\n\nlistando estudiantes: ");
-        foreach (Estudiante est in listarEstudiantes.Ejecutar())
-            Console.WriteLine(est);
-
-
-
-
-
-
-
-        // //codigo de prueba libros:
-
-
-        // //inicializo los casos de uso e inyecto las dependencias de libros:
-        var altaLibro = new AltaLibroUseCase(repositorioLibro);
-        var verLibro = new VerLibroUseCase(repositorioLibro);
-        var bajaLibro = new BajaLibroUseCase(repositorioLibro);
-        var listarLibros = new ListarLibrosUseCase(repositorioLibro);
-        var modificarLibro = new ModificarLibroUseCase(repositorioLibro);
+        //codigo de prueba libros:
 
 
         //creo una lista de libros:
@@ -151,21 +130,8 @@ public class IniciarBdd{
 
 
 
-        //listo en consola todos los libros guardados
-        Console.WriteLine("\n\nlistando libros: ");
-        foreach(Libro libro in listarLibros.Ejecutar()){
-            Console.WriteLine(libro);
-        }
-        Console.WriteLine();
-        Console.WriteLine("ver libro:");
-        Console.WriteLine(verLibro.Ejecutar(1));
-
-
-
+        
         //codigo de prueba prestamos:
-
-        
-        
         
         Prestamo[] prestamos = {
             new Prestamo(13,1,DateTime.Now),
@@ -178,24 +144,10 @@ public class IniciarBdd{
             realizarPrestamo.Ejecutar(prestamo);
 
         prestamos[0].devolver(DateTime.Now, true);
-        prestamos[1].devolver(DateTime.Now, true);
+        prestamos[1].devolver(DateTime.Now, false);
 
         devolverLibro.Ejecutar(prestamos[0]);
         devolverLibro.Ejecutar(prestamos[1]);
-
-
-        Console.WriteLine("\n prestamos: \n\n");
-
-        foreach (Prestamo p in listarPrestamos.Ejecutar()){
-            Console.WriteLine(p);
-        }
-
-        Console.WriteLine("\n prestamos activos: \n\n");
-
-        foreach (Prestamo p in listarPrestamosActivos.Ejecutar()){
-            Console.WriteLine(p);
-        }
-
 
 
     }

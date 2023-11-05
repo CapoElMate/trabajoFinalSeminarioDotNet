@@ -80,7 +80,7 @@
 
     private void AbrirCuadroCrear(Docente doc){
         
-            Console.WriteLine("creando");
+            //Console.WriteLine("creando");
             docIngresar.esCrear = true;        
             docIngresar.OnRellenado = EventCallback.Factory.Create(this, () => Crear(doc));
             docIngresar.docente = doc;
@@ -95,7 +95,7 @@
 
 
     private void AbrirCuadroEditar(Docente doc){
-        Console.WriteLine("editando");
+        //Console.WriteLine("editando");
         docIngresar.esCrear = false;        
         docIngresar.OnRellenado = EventCallback.Factory.Create(this, () => Editar(doc));
         docIngresar.docente = doc;

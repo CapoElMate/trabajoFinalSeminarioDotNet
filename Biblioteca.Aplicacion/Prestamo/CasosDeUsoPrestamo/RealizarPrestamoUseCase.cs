@@ -22,13 +22,10 @@ public class RealizarPrestamoUseCase
     {
         int cant = -1; //inicializo el valor de retorno
 
-        try{
-            Libro libro = repoLibro.verLibro(idLibro);  //tomo el valor del libro con ese id
-            cant = libro.numeroEjemplares;              
-        }
-        catch(Exception e){
-            Console.WriteLine("error obteniendo la cantidad de ejemplares del libro con id " + idLibro + e); 
-        }
+    
+        Libro libro = repoLibro.verLibro(idLibro);  //tomo el valor del libro con ese id
+        cant = libro.numeroEjemplares;              
+    
 
         return cant;
     }

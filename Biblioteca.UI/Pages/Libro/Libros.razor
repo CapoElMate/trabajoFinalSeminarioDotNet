@@ -73,7 +73,7 @@
     LibrosIngresar libIngresar = null!;
 
     private void AbrirCuadroCrear(Libro lib){
-        Console.WriteLine("creando");
+        //Console.WriteLine("creando");
         libIngresar.esCrear = true;        
         libIngresar.OnRellenado = EventCallback.Factory.Create(this, () => Crear(lib));
         libIngresar.libro = lib;
@@ -87,7 +87,7 @@
 
 
     private void AbrirCuadroEditar(Libro lib){
-        Console.WriteLine("editando");
+        //Console.WriteLine("editando");
         libIngresar.esCrear = false;        
         libIngresar.OnRellenado = EventCallback.Factory.Create(this, () => Editar(lib));
         libIngresar.libro = lib;
