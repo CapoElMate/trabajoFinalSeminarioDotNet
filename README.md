@@ -1,7 +1,11 @@
 # Trabajo Final Seminario .Net
-Trabajo final para la materia de seminario de lenguajes de .net , persistencia en SQLite y UI en Blazor Server.
+## Trabajo final para la materia de seminario de lenguajes de .net 
+La persistencia la maneje en SQLite y la UI en Blazor Server. El programa fue creado siguiendo los principios SOLID y arquitectura limpia.
 
-Para ejecutarlo recomiendo usar el entorno vs code, hacer un pull desde este repo , y correrlo con F5.
+
+Para ejecutarlo recomiendo usar el entorno vs code, hacer un pull desde este repo , y correrlo con ctrl + F5.
+
+### Vista Previa:
 ![image](https://github.com/CapoElMate/trabajoFinalSeminarioDotNet/assets/98244427/57d17137-29c7-42b4-8765-74daab036758)
 ![image](https://github.com/CapoElMate/trabajoFinalSeminarioDotNet/assets/98244427/1eaa4ecb-274f-45c3-b437-a371b9024ae9)
 ![image](https://github.com/CapoElMate/trabajoFinalSeminarioDotNet/assets/98244427/bb2651bf-9d99-406b-ad30-e507da9ebab4)
