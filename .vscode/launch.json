@@ -1,26 +1,41 @@
 {
+    // Use IntelliSense para saber los atributos posibles.
+    // Mantenga el puntero para ver las descripciones de los existentes atributos.
+    // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
+
         {
-            // Use IntelliSense para averiguar qué atributos existen para la depuración de C#.
-            // Usar el puntero por encima para la descripción de los atributos existentes
-            // Para obtener más información, visite https://github.com/dotnet/vscode-csharp/blob/main/debugger-launchjson.md
-            "name": ".NET Core Launch (console)",
+            "name": ".NET Core Launch (web)",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            // Si ha cambiado las plataformas de destino, asegúrese de actualizar la ruta de acceso del programa.
-            "program": "${workspaceFolder}/Biblioteca.Consola/bin/Debug/net7.0/Biblioteca.Consola.dll",
+            "program": "${workspaceRoot}/Biblioteca.UI/bin/Debug/net7.0/Biblioteca.UI.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/Biblioteca.Consola",
-            // Para obtener más información sobre el campo \"consola\", consulte https://aka.ms/VSCode-CS-LaunchJson-Console
-            "console": "integratedTerminal",
-            "stopAtEntry": false
-        },
-        {
-            "name": ".NET Core Attach",
-            "type": "coreclr",
-            "request": "attach"
+            "cwd": "${workspaceRoot}/Biblioteca.UI",
+            "stopAtEntry": false,
+            "launchBrowser": {
+                "enabled": false,
+                "args": "${auto-detect-url}",
+                "windows": {
+                    "command": "cmd.exe",
+                    "args": "/C start ${auto-detect-url}"
+                },
+                "osx": {
+                    "command": "open"
+                },
+                "linux": {
+                    "command": "xdg-open"
+                }
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceRoot}/Views"
+            }
         }
+
     ]
 }

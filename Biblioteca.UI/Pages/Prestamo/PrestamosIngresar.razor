@@ -1,0 +1,122 @@
+
+@if(visible){
+    <div class="dialogo-contenedor"> 
+        <div class="dialogo-contenido"> 
+            <h3>Crear un prestamo</h3>
+
+                <label>persona:</label>
+
+                <EditForm Model="@listaPersonas">
+                
+                    <InputSelect id="FirstString" @bind-Value="personaSeleccionada">
+                        <option value="0">seleccionar persona</option>
+                        @foreach(Persona p in listaPersonas){
+                            <option value="@p.Id">@p.nombre</option> 
+                        }
+                    </InputSelect>
+                
+                </EditForm>
+
+                <EditForm Model="@listaLibros">
+
+                    <InputSelect id="FirstString" @bind-Value="libroSeleccionado">
+                        <option value="0">seleccionar libro</option>
+                        @foreach(Libro l in listaLibros){
+                            @* la siguiente linea busca los libros que tengan esa id y dice si esta disponible. *@
+                            cantLibros = l.numeroEjemplares - (l.Prestamos == null ? 0 : l.Prestamos.Count()); @*esta parte es para que no salga el error de qeu la lista puede ser nula *@
+
+                            if(cantLibros < 1)  {   <option value="0" disabled="true"> @l.titulo - disponibles: @cantLibros </option> }
+                            else                {               <option value="@l.Id"> @l.titulo - disponibles: @cantLibros </option> }
+
+                        }
+                    </InputSelect>
+                
+                </EditForm>
+
+                <InputDate @bind-Value="prestamo.fechaDePrestamo"/>
+
+            @* <input placeholder="nombre" @bind=prestamo.nombre>              *@
+            
+
+            <br>
+            <br>
+            <br>
+            <button class="btn btn-primary" @onclick="CerrarYGuardar">Finalizar Edicion</button>
+            <button class="btn btn-secondary" @onclick="Cerrar">Cancelar</button>
+        
+            <MensajeError @ref="msjError"/>
+        
+        </div>
+    </div>
+}
+
+
+@code{
+
+    
+    public bool visible{get; set;}
+
+
+    [Parameter]
+    public Prestamo prestamo{get;set;} = new Prestamo(); // inicio prestamo como un prestamo vacio. para que no salga la advertencia de null Preguntar si doca bn
+
+    [Parameter]
+    public EventCallback OnRellenado{get;set;}
+
+    [Parameter]
+    public List<Persona> listaPersonas{get;set;} = new List<Persona>();
+    [Parameter]
+    public List<Libro> listaLibros{get;set;} = new List<Libro>();
+
+    public int cantLibros{get;set;}
+
+    private String accion = "";
+
+    MensajeError msjError = null!;
+
+    public int personaSeleccionada,libroSeleccionado;
+
+
+    protected override void OnParametersSet()
+    {   
+        base.OnParametersSet();
+    }
+
+    public void Mostrar()
+    {
+        visible=true;
+
+        StateHasChanged();
+    }
+    void Cerrar()
+    {
+        visible=false;  
+    }
+    void CerrarYGuardar(){        
+        
+
+        if(algunCampoVacio(prestamo)){
+            msjError.Mostrar();
+            msjError.mensaje = "hay campos vacios. por favor rellenalos.";
+        }
+        else{
+            visible = false;
+            prestamo.LibroId = libroSeleccionado;
+            prestamo.PersonaId = personaSeleccionada;
+            OnRellenado.InvokeAsync();
+        }
+
+    }
+
+    private bool algunCampoVacio(Prestamo prest){
+       
+        //Console.WriteLine(personaSeleccionada);
+        //Console.WriteLine(libroSeleccionado);
+
+       //NOTA: no verifico fecha todavia
+        return (personaSeleccionada == 0)   || (libroSeleccionado == 0)   ;
+
+    }
+
+
+}

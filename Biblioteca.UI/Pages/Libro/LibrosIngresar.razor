@@ -1,0 +1,109 @@
+
+@if(visible){
+    <div class="dialogo-contenedor"> 
+        <div class="dialogo-contenido"> 
+            <h3>@( (esCrear) ? "Dar de Alta" : "Modificar") un libro</h3> <!-- cambia el titulo segun si el metodo es crear -->
+
+        
+                <label>titulo:</label>
+                <input placeholder="titulo" @bind=libro.titulo>             
+                <br/>
+
+                <label>autor:</label>
+                <input placeholder="autor" @bind=libro.autor>     
+                <br/>
+
+                <label>año de publicacion:</label>
+                <input placeholder="año de publicacion" @bind=añoPublicacion>     
+                <br/>
+
+                <label>genero:</label>
+                <input placeholder="genero" @bind=libro.genero>     
+                <br/>
+
+                <label>cant. de ejemplares:</label>
+                <input placeholder="cant. de ejemplares" @bind=numeroEjemplares>     
+                <br/>
+
+            <br>
+
+
+            <br>
+            <br>
+            <br>
+            <button class="btn btn-primary" @onclick="CerrarYGuardar">Finalizar Edicion</button>
+            <button class="btn btn-secondary" @onclick="Cerrar">Cancelar</button>
+        
+            <MensajeError @ref="msjError"/>
+        
+        </div>
+    </div>
+}
+
+
+@code{
+
+    
+    public bool visible{get; set;}
+    
+    [Parameter]
+    public bool esCrear{get;set;} //liba variable va a definir si creo un libro o ingreso uno.
+
+    [Parameter]
+    public Libro libro{get;set;} = new Libro(); // inicio libro como un libro vacio. para que no salga la advertencia de null Preguntar si liba bn
+
+    [Parameter]
+    public EventCallback OnRellenado{get;set;}
+
+    private String accion = "";
+
+    MensajeError msjError = null!;
+
+    private int? numeroEjemplares,añoPublicacion;
+
+    protected override void OnParametersSet()
+    {       
+        
+        base.OnParametersSet();
+        accion = (esCrear) ? "Crear" : "Modificar";
+        
+    }
+
+    public void Mostrar()
+    {
+        numeroEjemplares = (libro.numeroEjemplares == -1) ? null : libro.numeroEjemplares;
+        añoPublicacion = (libro.añoPublicacion == int.MinValue) ? null : libro.añoPublicacion;
+
+        visible=true;
+        StateHasChanged();
+    }
+    void Cerrar()
+    {
+        visible=false;  
+    }
+    void CerrarYGuardar(){        
+        
+
+         if(algunCampoVacio(libro)){
+            msjError.Mostrar();
+            msjError.mensaje = "hay campos vacios. por favor rellenalos.";
+        }
+        else{
+            libro.añoPublicacion = añoPublicacion ?? int.MinValue;// si por alguna razon año publicacion es nul, guardo el valor minimo entero.
+            libro.numeroEjemplares = numeroEjemplares ?? -1;// si por alguna razon año publicacion es nul, guardo -1.
+
+            visible = false;
+            OnRellenado.InvokeAsync();
+        } 
+
+    }
+
+    private bool algunCampoVacio(Libro lib){
+       
+        return (lib.titulo == "")   || (lib.autor == "")     || (añoPublicacion == int.MinValue) ||
+        (lib.genero == "")        || (numeroEjemplares == -1)  ;
+
+    }
+
+
+}

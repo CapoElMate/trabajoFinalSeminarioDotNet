@@ -9,34 +9,43 @@ fecha de préstamo, fecha de devolución y estado del libro devuelto (en buen es
 */
 
 //para cuando creo el prestamo:
-public int id {get; set;}
-public int persona {get;}
-public int libro {get;}
-public DateTime fechaDePrestamo {get;}
+public int? id {get; set;}
+public int PersonaId {get; set;}
+public int LibroId {get;set;}
+public DateTime fechaDePrestamo {get;set;}
 
 public bool estaDevuelto{get; protected set;}
 //para cuando lo devuevo:
-public DateTime fechaDeDevolucion {get; protected set;}
-public bool estaEnBuenEstado{get; protected set;}
+public DateTime fechaDeDevolucion {get; set;}
+public bool estaEnBuenEstado{get; set;}
+
+
 
 
 //constructor:
-    public Prestamo(int persona, int libro, DateTime fechaDePrestamo){
+
+    public Prestamo(){
         estaDevuelto = false;
-        this.id = -1;
-        this.persona = persona;
-        this.libro = libro;
-        this.fechaDePrestamo = fechaDePrestamo;
-        //los inicio en null porque todavia no toman un valor.
-            // fechaDeDevolucion = null;
-            // estaEnBuenEstado = null;
+        this.id = null;
+        this.PersonaId = -1;
+        this.LibroId = -1;
+        this.fechaDePrestamo = DateTime.Now;
     }
 
-    public Prestamo(int id ,int persona, int libro, DateTime fechaDePrestamo){
+    public Prestamo(int PersonaId, int libroId, DateTime fechaDePrestamo){
+        estaDevuelto = false;
+        
+        this.id = null;
+        this.PersonaId = PersonaId;
+        this.LibroId = libroId;
+        this.fechaDePrestamo = fechaDePrestamo;
+    }
+
+    public Prestamo(int id ,int PersonaId, int libroId, DateTime fechaDePrestamo){
         estaDevuelto = false;
         this.id = id;
-        this.persona = persona;
-        this.libro = libro;
+        this.PersonaId = PersonaId;
+        this.LibroId = libroId;
         this.fechaDePrestamo = fechaDePrestamo;
     }
 
@@ -49,7 +58,7 @@ public bool estaEnBuenEstado{get; protected set;}
     public override string ToString(){
         string str = "";
 
-        str=$"{id},{persona},{libro},{fechaDePrestamo.ToString("yyyy-MM-dd")}"; //despues usar parse exact
+        str=$"{id},{PersonaId},{LibroId},{fechaDePrestamo.ToString("yyyy-MM-dd")}"; //despues usar parse exact
 
         if(estaDevuelto)
             str += $",{fechaDeDevolucion.ToString("yyyy-MM-dd")},{estaEnBuenEstado}";

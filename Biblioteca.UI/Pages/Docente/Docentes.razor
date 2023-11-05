@@ -1,0 +1,128 @@
+@page "/docentes"
+@using Biblioteca.UI.Data;
+@using Biblioteca.Repositorios;
+
+@inject ListarDocentesUseCase ListarDocentesUseCase;
+@inject BajaDocenteUseCase BajaDocenteUseCase;
+@inject ModificarDocenteUseCase ModificarDocenteUseCase;
+@inject AltaDocenteUseCase AltaDocenteUseCase;
+
+<PageTitle>Docentes</PageTitle>
+<h1> Docentes </h1>
+
+
+<CuadroDialogo @ref="dialogo" />
+<DocentesIngresar @ref="docIngresar" />
+
+<button class="btn btn-success" @onclick="()=>AbrirCuadroCrear(new Docente())">
+        
+    <span>Dar de Alta un Docente</span>
+
+</button>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>APELLIDO</th>
+            <th>NRO. CARNET</th>
+            <th>FACULTAD</th>
+            <th>AÑO DE INICIO DOCENCIA</th>
+            <th>NRO. MATRICULA</th>
+            <th>TELEFONO</th>
+            <th>CORREO ELECTRONICO</th>
+            <th>OPCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var doc in _lista)
+        {
+            <tr>
+                <td>@doc.Id</td>
+                <td>@doc.nombre</td>
+                <td>@doc.apellido</td>
+                <td>@doc.numeroCarnet</td>
+                <td>@doc.facultad</td>
+                <td>@doc.añoInicioDocencia</td>
+                <td>@doc.numeroMatricula</td>
+                <td>@doc.telefono</td>
+                <td>@doc.correoElectronico</td>
+                <td>
+                    <button class="btn btn-outline-success btn-sm" @onclick="()=>AbrirCuadroEditar(doc)">
+                        <span class="oi oi-pencil"></span>
+                    </button>
+                    
+                    <button class="btn btn-outline-danger btn-sm" @onclick="()=>ConfirmarBorrar(doc)" >
+                        <span class="oi oi-trash"></span>
+                    </button>
+
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+@code{
+    List<Docente> _lista = new List<Docente>();
+    
+    protected override void OnInitialized()
+    {
+        _lista = ListarDocentesUseCase.Ejecutar();
+    }
+
+    CuadroDialogo dialogo = null!; 
+    private int idEliminar = 0;
+    
+    DocentesIngresar docIngresar = null!;
+
+    private void AbrirCuadroCrear(Docente doc){
+        
+            //Console.WriteLine("creando");
+            docIngresar.esCrear = true;        
+            docIngresar.OnRellenado = EventCallback.Factory.Create(this, () => Crear(doc));
+            docIngresar.docente = doc;
+            docIngresar.Mostrar();
+        
+    }
+
+    private void Crear(Docente doc){
+        AltaDocenteUseCase.Ejecutar(doc);
+        _lista = ListarDocentesUseCase.Ejecutar();
+    }
+
+
+    private void AbrirCuadroEditar(Docente doc){
+        //Console.WriteLine("editando");
+        docIngresar.esCrear = false;        
+        docIngresar.OnRellenado = EventCallback.Factory.Create(this, () => Editar(doc));
+        docIngresar.docente = doc;
+        docIngresar.Mostrar();
+    }
+
+    private void Editar(Docente doc){
+        ModificarDocenteUseCase.Ejecutar(doc);
+        _lista = ListarDocentesUseCase.Ejecutar();
+    }
+
+
+
+
+    private void ConfirmarBorrar(Docente doc)
+    {
+        idEliminar = doc.Id ?? 0; // si doc.id es nulo, devuelve 0
+        dialogo.OnConfirmado = EventCallback.Factory.Create(this, () => Eliminar(idEliminar));
+        dialogo.Mensaje = $"¿Desea eliminar al docente {doc.nombre} {doc.apellido} , id: {doc.Id} ?";
+        dialogo.Mostrar();  
+    }
+
+    private void Eliminar(int id){
+        
+        BajaDocenteUseCase.Ejecutar(id);
+        _lista = ListarDocentesUseCase.Ejecutar();
+    }
+    
+
+}

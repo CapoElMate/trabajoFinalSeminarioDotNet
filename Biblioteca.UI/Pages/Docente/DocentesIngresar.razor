@@ -1,0 +1,122 @@
+
+@if(visible){
+    <div class="dialogo-contenedor"> 
+        <div class="dialogo-contenido"> 
+            <h3>@( (esCrear) ? "Dar de Alta" : "Modificar") un docente</h3> <!-- cambia el titulo segun si el metodo es crear -->
+
+                <label>nombre:</label>
+                <input placeholder="nombre" @bind=docente.nombre>             
+            <br>
+                <label>apellido:</label>
+                <input placeholder="apellido" @bind=docente.apellido>            
+            <br>
+                <label>numero de carnet:</label>
+                <input placeholder="123456" @bind=numeroCarnet>            
+            <br>
+                <label>facultad:</label>
+                <input placeholder="facultad" @bind=docente.facultad>
+            <br>
+                <label>año de inicio docencia :</label>
+                <input placeholder="2000" @bind=añoInicioDocencia>
+            <br>
+                <label>numero matricula docente:</label>
+                <input placeholder="111111" @bind=numeroMatricula>
+            <br>
+                <label>telefono:</label>
+                <input placeholder="000-000-0000" @bind=docente.telefono>
+            <br>
+                <label>correo electronico:</label>
+                <input placeholder="alumno@mail.com" @bind=docente.correoElectronico>
+
+            <br>
+            <br>
+            <br>
+            <button class="btn btn-primary" @onclick="CerrarYGuardar">Finalizar Edicion</button>
+            <button class="btn btn-secondary" @onclick="Cerrar">Cancelar</button>
+        
+            <MensajeError @ref="msjError"/>
+        
+        </div>
+    </div>
+}
+
+
+@code{
+
+    
+    public bool visible{get; set;}
+    
+    [Parameter]
+    public bool esCrear{get;set;} //doca variable va a definir si creo un docente o ingreso uno.
+
+    [Parameter]
+    public Docente docente{get;set;} = new Docente(); // inicio docente como un docente vacio. para que no salga la advertencia de null Preguntar si doca bn
+
+    [Parameter]
+    public EventCallback OnRellenado{get;set;}
+
+    private String accion = "";
+
+    MensajeError msjError = null!;
+
+    private int? añoInicioDocencia,numeroMatricula,numeroCarnet;
+
+
+    protected override void OnParametersSet()
+    {   
+        base.OnParametersSet();
+        accion = (esCrear) ? "Crear" : "Modificar";        
+    }
+
+    public void Mostrar()
+    {
+        visible=true;
+
+        //inicio numero de carnet en nulo si el obj. docente tiene el nro de alumno en -1 (valor por defecto), de lo contrario, inicia con su valor
+        //inicio en Mostrar() porque en OnParametersSet no funcionaba.
+        numeroCarnet = (docente.numeroCarnet == -1) ? null : docente.numeroCarnet;
+        numeroMatricula = (docente.numeroMatricula == -1) ? null : docente.numeroMatricula;
+        añoInicioDocencia = (docente.añoInicioDocencia == 1901) ? null : docente.añoInicioDocencia;
+
+        StateHasChanged();
+    }
+    void Cerrar()
+    {
+        visible=false;  
+    }
+    void CerrarYGuardar(){        
+        
+
+        if(algunCampoVacio(docente)){
+            msjError.Mostrar();
+            msjError.mensaje = "hay campos vacios. por favor rellenalos.";
+        }
+        else{
+            docente.numeroCarnet = numeroCarnet ?? -1;
+            docente.numeroMatricula = numeroMatricula ?? -1;
+            
+            //si año de docencia es nulo, o si su valor no esta dentro de su rango correcto, toma su valor por defecto (1901)
+            try{
+                docente.añoInicioDocencia = añoInicioDocencia ?? 1901;           
+            }
+            catch(ArgumentException){
+                msjError.mensaje = "Error, el año de docencia no esta en el rango correcto";
+                return; // sale de CerrarYGuardar
+            }            
+            
+            visible = false;
+            OnRellenado.InvokeAsync();
+        }
+
+    }
+
+    private bool algunCampoVacio(Docente doc){
+       
+        return (doc.nombre == "")   || (doc.apellido == "")     || (doc.numeroCarnet == -1) ||
+        (doc.facultad == "")        || (doc.añoInicioDocencia == 1901)      || (doc.numeroMatricula == -1) ||
+        (doc.telefono == "" )       || (doc.correoElectronico == "");
+
+    }
+
+
+}
