@@ -7,9 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Biblioteca.Aplicacion\Prestamo\">
-      <Link>PrestamoCasosDeUso</Link>
-    </Content>
   </ItemGroup>
 
 </Project>
