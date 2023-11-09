@@ -33,9 +33,13 @@
                 
                 </EditForm>
 
-                <InputDate @bind-Value="prestamo.fechaDePrestamo"/>
+                @*<InputDate @bind-Value="prestamo.fechaDePrestamo"/>*@
+                <br>
+                
+                <label> fecha y hora actual: </label>
+                <p color="grey"> @prestamo.fechaDePrestamo </p>
 
-            @* <input placeholder="nombre" @bind=prestamo.nombre>              *@
+            
             
 
             <br>
@@ -70,22 +74,16 @@
 
     public int cantLibros{get;set;}
 
-    private String accion = "";
-
     MensajeError msjError = null!;
 
     public int personaSeleccionada,libroSeleccionado;
 
 
-    protected override void OnParametersSet()
-    {   
-        base.OnParametersSet();
-    }
-
+    
     public void Mostrar()
     {
         visible=true;
-
+        prestamo.fechaDePrestamo = DateTime.Now; //seteo la fecha del prestamo a ahora.
         StateHasChanged();
     }
     void Cerrar()

@@ -68,7 +68,8 @@ a, .btn-link {
         content: "An error has occurred."
     }
 
-
+    /* la siguiente parte del css contiene las clases que usan las ventanas de popup
+       (por ejemplo,CuadroDialogo.razor , o EstudiantesIngresar.razor )*/
     .dialogo-contenedor {
         position: fixed;
         top:0;
