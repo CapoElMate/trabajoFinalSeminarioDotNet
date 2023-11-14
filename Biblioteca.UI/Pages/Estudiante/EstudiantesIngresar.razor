@@ -49,13 +49,13 @@
     
     public bool visible{get; set;}
     
-    [Parameter]
+    
     public bool esCrear{get;set;} //esta variable va a definir si creo un estudiante o ingreso uno.
 
-    [Parameter]
+    
     public Estudiante estudiante{get;set;} = new Estudiante(); // inicio estudiante como un estudiante vacio. para que no salga la advertencia de null Preguntar si esta bn
 
-    [Parameter]
+    
     public EventCallback OnRellenado{get;set;}
 
     private String accion = "";
@@ -96,8 +96,7 @@
         
 
         if(algunCampoVacio(estudiante)){
-            msjError.Mostrar();
-            msjError.mensaje = "hay campos vacios. por favor rellenalos.";
+            msjError.Mostrar("hay campos vacios. por favor rellenalos.");
         }
         else{
             visible = false;

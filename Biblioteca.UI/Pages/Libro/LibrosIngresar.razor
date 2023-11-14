@@ -46,13 +46,13 @@
     
     public bool visible{get; set;}
     
-    [Parameter]
+    //[Parameter]
     public bool esCrear{get;set;} //liba variable va a definir si creo un libro o ingreso uno.
 
-    [Parameter]
+    //[Parameter]
     public Libro libro{get;set;} = new Libro(); // inicio libro como un libro vacio. para que no salga la advertencia de null Preguntar si liba bn
 
-    [Parameter]
+    //[Parameter]
     public EventCallback OnRellenado{get;set;}
 
     private String accion = "";
@@ -84,9 +84,8 @@
     void CerrarYGuardar(){        
         
 
-         if(algunCampoVacio(libro)){
-            msjError.Mostrar();
-            msjError.mensaje = "hay campos vacios. por favor rellenalos.";
+         if(algunCampoVacio(libro)){            
+            msjError.Mostrar("hay campos vacios. por favor rellenalos."); 
         }
         else{
             libro.añoPublicacion = añoPublicacion ?? int.MinValue;// si por alguna razon año publicacion es nul, guardo el valor minimo entero.

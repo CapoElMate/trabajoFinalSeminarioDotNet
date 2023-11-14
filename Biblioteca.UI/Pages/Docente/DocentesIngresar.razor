@@ -47,13 +47,13 @@
     
     public bool visible{get; set;}
     
-    [Parameter]
+    
     public bool esCrear{get;set;} //doca variable va a definir si creo un docente o ingreso uno.
 
-    [Parameter]
+    
     public Docente docente{get;set;} = new Docente(); // inicio docente como un docente vacio. para que no salga la advertencia de null Preguntar si doca bn
 
-    [Parameter]
+    
     public EventCallback OnRellenado{get;set;}
 
     private String accion = "";
@@ -89,8 +89,7 @@
         
 
         if(algunCampoVacio(docente)){
-            msjError.Mostrar();
-            msjError.mensaje = "hay campos vacios. por favor rellenalos.";
+            msjError.Mostrar("hay campos vacios. por favor rellenalos.");
         }
         else{
             docente.numeroCarnet = numeroCarnet ?? -1;
@@ -101,7 +100,7 @@
                 docente.añoInicioDocencia = añoInicioDocencia ?? 1901;           
             }
             catch(ArgumentException){
-                msjError.mensaje = "Error, el año de docencia no esta en el rango correcto";
+                msjError.Mostrar("Error, el año de docencia no esta en el rango correcto");
                 return; // sale de CerrarYGuardar
             }            
             

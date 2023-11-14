@@ -28,10 +28,10 @@
     public DateTime fechaDev{get;set;}= DateTime.Now;
 
 
-    [Parameter]
+    
     public Prestamo prestamo{get;set;} = new Prestamo(); // inicio prestamo como un prestamo vacio. para que no salga la advertencia de null Preguntar si doca bn
 
-    [Parameter]
+    
     public EventCallback OnRellenado{get;set;}
 
     public string val = "";

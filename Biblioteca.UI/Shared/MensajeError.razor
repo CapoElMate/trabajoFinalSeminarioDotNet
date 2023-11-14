@@ -6,13 +6,12 @@
 @code{
 
     private bool visible;
-
-    [Parameter]
-    public string mensaje {get;set;} = "";
-    
-    public void Mostrar()
+    //public string mensaje {get;set;} = "";
+    string mensaje = ""; 
+    public void Mostrar(String mensaje)
     {
         visible=true;
+        this.mensaje = mensaje;
         StateHasChanged();
     }
     void Cerrar()

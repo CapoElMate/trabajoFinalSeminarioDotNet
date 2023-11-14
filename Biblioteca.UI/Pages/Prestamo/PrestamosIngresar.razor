@@ -61,15 +61,11 @@
     public bool visible{get; set;}
 
 
-    [Parameter]
     public Prestamo prestamo{get;set;} = new Prestamo(); // inicio prestamo como un prestamo vacio. para que no salga la advertencia de null Preguntar si doca bn
 
-    [Parameter]
     public EventCallback OnRellenado{get;set;}
-
-    [Parameter]
+    
     public List<Persona> listaPersonas{get;set;} = new List<Persona>();
-    [Parameter]
     public List<Libro> listaLibros{get;set;} = new List<Libro>();
 
     public int cantLibros{get;set;}
@@ -94,8 +90,7 @@
         
 
         if(algunCampoVacio(prestamo)){
-            msjError.Mostrar();
-            msjError.mensaje = "hay campos vacios. por favor rellenalos.";
+            msjError.Mostrar("hay campos vacios. por favor rellenalos.");
         }
         else{
             visible = false;
